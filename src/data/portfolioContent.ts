@@ -479,8 +479,7 @@ Als student **Toegepaste Informatica met specialisatie in AI** is zo'n beurs het
 
 ---
 
-> 📷 **Foto Placeholder: Sfeerimpressie Beursvloer / Standbezoek**  
-> *(Plaats hier je foto: bijv. \`![Stagemarkt Beursvloer](/images/stagemarkt-hero.jpg)\`)*
+![Sfeerimpressie Howest Stagemarkt](/images/stagemarkt-hero.jpg)
 
 ---
 
@@ -491,11 +490,6 @@ Mijn doelstelling voor deze beurs was duidelijk afgebakend en tweeledig:
 2. **Zoeken naar ontwikkelteams met een hands-on mentaliteit:** Bedrijven waar innovatie, technische ownership en schone code centraal staan.
 
 In plaats van oppervlakkig visitekaartjes en brochures te verzamelen, ging ik doelgericht het gesprek aan over concrete projecten, tech stacks en actuele stage-opdrachten. Dit leverde direct diepgaandere en meer memorabele contacten op met senior engineers en recruiters.
-
----
-
-> 📷 **Foto Placeholder: In-action / 1-op-1 Gesprek met Recruiters & Engineers**  
-> *(Plaats hier je foto: bijv. \`![Gesprek op de stagemarkt](/images/stagemarkt-gesprek.jpg)\`)*
 
 ---
 
@@ -546,8 +540,7 @@ De centrale vraag van de sessie luidde:
 
 ---
 
-> 📷 **Foto Placeholder: Spreker & Openingsslide EU AI Act Keynote**  
-> *(Plaats hier je foto: bijv. \`![EU AI Act Presentatie](/images/ai-act-keynote.jpg)\`)*
+![Spreker & Openingsslide EU AI Act Keynote](/images/ai-act-keynote.jpg)
 
 ---
 
@@ -587,8 +580,7 @@ Dit vraagt om concrete technische waarborgen in het ontwikkelproces:
 
 ---
 
-> 📷 **Foto Placeholder: Inhoudelijke Slide Risicokader / LinkedIn Samenvatting**  
-> *(Plaats hier je foto: bijv. \`![AI Act Slide & LinkedIn Post](/images/ai-act-slide.jpg)\`)*
+![EU AI Act Presentatie & Risicoclassificatie Slide](/images/ai-act-slide.jpg)
 
 ---
 
