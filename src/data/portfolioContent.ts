@@ -236,7 +236,7 @@ Ik combineer praktische werkervaring in **C# en .NET** met een passie voor moder
 
 ---
 
-![Curriculum Vitae Preview — Wout Verstraete](/images/cv-diploma-preview.png)
+![Curriculum Vitae Preview — Wout Verstraete](/images/cv-diploma-preview-p1.png)
 
 ---
 

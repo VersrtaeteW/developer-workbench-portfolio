@@ -32,11 +32,13 @@ export const PostViewer: React.FC<PostViewerProps> = ({
 }) => {
   const [copiedCodeId, setCopiedCodeId] = useState<string | null>(null);
   const [linkCopied, setLinkCopied] = useState(false);
+  const [cvPage, setCvPage] = useState<1 | 2>(1);
   const containerRef = useRef<HTMLElement>(null);
 
-  // Reset scroll to top when user switches posts
+  // Reset scroll to top and reset CV page when user switches posts
   useEffect(() => {
     containerRef.current?.scrollTo({ top: 0, behavior: 'instant' });
+    setCvPage(1);
   }, [post.id]);
 
   // Compute Prev / Next post navigation
@@ -162,12 +164,75 @@ export const PostViewer: React.FC<PostViewerProps> = ({
               },
               img({ src, alt, ...props }) {
                 const isCv = typeof src === 'string' && src.toLowerCase().includes('cv');
+                const activeSrc = isCv
+                  ? (cvPage === 1 ? '/images/cv-diploma-preview-p1.png' : '/images/cv-diploma-preview-p2.png')
+                  : src;
+
                 return (
                   <figure className="my-6 rounded-lg border border-[#30363d] overflow-hidden bg-[#161b22] shadow-xl">
-                    <div className="bg-[#0d1117] flex items-center justify-center p-1 sm:p-2">
+                    {/* Interactive Tab bar if it's the CV */}
+                    {isCv && (
+                      <div className="flex items-center justify-between px-3 py-2 bg-[#161b22] border-b border-[#30363d] text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#8b949e] font-medium hidden xs:inline">Pagina:</span>
+                          <div className="inline-flex rounded-md p-0.5 bg-[#0d1117] border border-[#30363d]">
+                            <button
+                              type="button"
+                              onClick={() => setCvPage(1)}
+                              className={`px-2.5 py-1 rounded text-xs font-medium transition-all ${
+                                cvPage === 1
+                                  ? 'bg-[#10b981] text-[#0d1117] font-semibold shadow-sm'
+                                  : 'text-[#8b949e] hover:text-[#e6edf3]'
+                              }`}
+                            >
+                              Pagina 1
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setCvPage(2)}
+                              className={`px-2.5 py-1 rounded text-xs font-medium transition-all ${
+                                cvPage === 2
+                                  ? 'bg-[#10b981] text-[#0d1117] font-semibold shadow-sm'
+                                  : 'text-[#8b949e] hover:text-[#e6edf3]'
+                              }`}
+                            >
+                              Pagina 2
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Arrow navigation shortcut */}
+                        <div className="flex items-center gap-1.5 text-[#8b949e]">
+                          <button
+                            type="button"
+                            disabled={cvPage === 1}
+                            onClick={() => setCvPage(1)}
+                            className="p-1 rounded hover:bg-[#21262d] disabled:opacity-30 disabled:cursor-not-allowed text-[#e6edf3] transition-colors"
+                            title="Vorige pagina"
+                          >
+                            <ChevronLeft className="w-4 h-4" />
+                          </button>
+                          <span className="text-xs font-mono px-1 font-semibold text-[#e6edf3]">
+                            {cvPage} / 2
+                          </span>
+                          <button
+                            type="button"
+                            disabled={cvPage === 2}
+                            onClick={() => setCvPage(2)}
+                            className="p-1 rounded hover:bg-[#21262d] disabled:opacity-30 disabled:cursor-not-allowed text-[#e6edf3] transition-colors"
+                            title="Volgende pagina"
+                          >
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="bg-[#0d1117] flex items-center justify-center p-1 sm:p-2 min-h-[300px]">
                       <img
-                        src={src}
-                        alt={alt || ''}
+                        key={isCv ? `cv-p-${cvPage}` : String(src)}
+                        src={activeSrc}
+                        alt={isCv ? `Curriculum Vitae Wout Verstraete — Pagina ${cvPage}` : (alt || '')}
                         className="w-full h-auto max-h-[850px] object-contain rounded"
                         loading="lazy"
                         {...props}
@@ -177,7 +242,9 @@ export const PostViewer: React.FC<PostViewerProps> = ({
                       <figcaption className="px-4 py-2.5 bg-[#161b22] text-xs text-[#8b949e] border-t border-[#30363d] italic flex items-center justify-between flex-wrap gap-2">
                         <span className="flex items-center gap-1.5">
                           <span className="text-[#10b981] font-semibold not-italic">📷</span>
-                          <span>{alt}</span>
+                          <span>
+                            {isCv ? `Curriculum Vitae Preview — Pagina ${cvPage} van 2` : alt}
+                          </span>
                         </span>
                         {isCv && (
                           <a
@@ -186,7 +253,7 @@ export const PostViewer: React.FC<PostViewerProps> = ({
                             className="not-italic inline-flex items-center gap-1 text-[#10b981] hover:text-[#34d399] font-medium transition-colors ml-auto text-xs"
                             title="Download originele CV in PDF formaat"
                           >
-                            <span>Download originele PDF</span>
+                            <span>Download originele PDF (2 pagina's)</span>
                             <span className="font-mono">↓</span>
                           </a>
                         )}
