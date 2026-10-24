@@ -1,0 +1,72 @@
+%PDF-1.4
+1 0 obj
+<< /Title (Curriculum Vitae - Wout Verstraete)
+   /Author (Wout Verstraete)
+   /Creator (Developer Workbench Portfolio) >>
+endobj
+2 0 obj
+<< /Type /Catalog
+   /Pages 3 0 R >>
+endobj
+3 0 obj
+<< /Type /Pages
+   /Kids [4 0 R]
+   /Count 1 >>
+endobj
+4 0 obj
+<< /Type /Page
+   /Parent 3 0 R
+   /MediaBox [0 0 612 792]
+   /Contents 5 0 R
+   /Resources << /Font << /F1 6 0 R >> >> >>
+endobj
+5 0 obj
+<< /Length 520 >>
+stream
+BT
+/F1 22 Tf
+50 720 Td
+(Wout Verstraete - Curriculum Vitae) Tj
+/F1 12 Tf
+0 -26 Td
+(Bachelor Toegepaste Informatica - Afstudeerrichting AI | Howest Brugge) Tj
+0 -18 Td
+(Tel: 0499 47 05 46 | Email: woutverstraete0608@gmail.com | 8730 Beernem) Tj
+0 -18 Td
+(GitHub: github.com/WoutV2a | LinkedIn: linkedin.com/in/wout-verstraete-2a) Tj
+0 -30 Td
+(TECHNISCHE KERNVAARDIGHEDEN:) Tj
+0 -18 Td
+(- AI & Data Science: Python, Pandas, NumPy, Scikit-Learn, PyTorch, TensorFlow) Tj
+0 -18 Td
+(- Programmeertalen & Frameworks: C#, .NET MAUI, Blazor, Xamarin, ASP.NET, WPF) Tj
+0 -18 Td
+(- Werkervaring: Developer bij Innovation Center Daenens | Centric Helpdesk) Tj
+0 -18 Td
+(- Projecten: Akkadian Translator (NLP / ML), ShopR Mobile App (C# / Xamarin)) Tj
+0 -18 Td
+(- Certificaat: Digital Transformation (University of Economics in Katowice)) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Font
+   /Subtype /Type1
+   /BaseFont /Helvetica >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000124 00000 n 
+0000000178 00000 n 
+0000000237 00000 n 
+0000000360 00000 n 
+0000000933 00000 n 
+trailer
+<< /Size 7
+   /Root 2 0 R
+   /Info 1 0 R >>
+startxref
+1000
+%%EOF

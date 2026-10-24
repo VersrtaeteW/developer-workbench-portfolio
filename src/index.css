@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0d1117;
+  --panel: #161b22;
+  --panel-active: #21262d;
+  --border: #30363d;
+  --border-muted: #21262d;
+  --foreground: #e6edf3;
+  --muted: #8b949e;
+  --accent-emerald: #10b981;
+  --accent-cyan: #06b6d4;
+  --accent-blue: #58a6ff;
+  --accent-purple: #bc8cff;
+  --accent-amber: #d29922;
+}
+
+body {
+  background-color: #0d1117;
+  color: #e6edf3;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+}
+
+/* Custom Scrollbars to match VS Code workbench */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #282e38;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3c4452;
+}
+
+/* Markdown typography styling */
+.prose-workbench {
+  color: #c9d1d9;
+  line-height: 1.7;
+}
+
+.prose-workbench h1 {
+  color: #f0f6fc;
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #21262d;
+  padding-bottom: 0.5rem;
+}
+
+.prose-workbench h2 {
+  color: #58a6ff;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-workbench h3 {
+  color: #7ee787;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-workbench p {
+  margin-bottom: 1rem;
+}
+
+.prose-workbench ul, .prose-workbench ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-workbench ul {
+  list-style-type: disc;
+}
+
+.prose-workbench ol {
+  list-style-type: decimal;
+}
+
+.prose-workbench li {
+  margin-bottom: 0.35rem;
+}
+
+.prose-workbench blockquote {
+  border-left: 3px solid #10b981;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #8b949e;
+  margin: 1.25rem 0;
+  background: rgba(16, 185, 129, 0.05);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0 4px 4px 0;
+}
+
+.prose-workbench code:not(pre code) {
+  background-color: #21262d;
+  color: #f0883e;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.prose-workbench hr {
+  border: none;
+  border-top: 1px solid #30363d;
+  margin: 1.75rem 0;
+}
+
+.prose-workbench table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.875rem;
+}
+
+.prose-workbench th, .prose-workbench td {
+  border: 1px solid #30363d;
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+}
+
+.prose-workbench th {
+  background-color: #161b22;
+  color: #f0f6fc;
+}
+
+.prose-workbench tr:nth-child(even) {
+  background-color: rgba(22, 27, 34, 0.4);
+}
