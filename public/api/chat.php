@@ -113,23 +113,34 @@ $geminiPayload = [
     ]
 ];
 
-// 4. CALL GEMINI VIA CURL
-$endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=" . urlencode($geminiApiKey);
+// 4. CALL GEMINI VIA CURL (Try high-performance responsive flash models)
+$modelsToTry = ['gemini-3.6-flash', 'gemini-3.8-flash', 'gemini-3.7-flash'];
+$response = false;
+$httpCode = 0;
+$curlError = '';
 
-$ch = curl_init($endpoint);
-curl_setopt_array($ch, [
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_POST => true,
-    CURLOPT_POSTFIELDS => json_encode($geminiPayload),
-    CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
-    CURLOPT_TIMEOUT => 20,
-    CURLOPT_SSL_VERIFYPEER => true
-]);
+foreach ($modelsToTry as $modelName) {
+    $endpoint = "https://generativelanguage.googleapis.com/v1beta/models/{$modelName}:generateContent?key=" . urlencode($geminiApiKey);
+    
+    $ch = curl_init($endpoint);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => json_encode($geminiPayload),
+        CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
+        CURLOPT_TIMEOUT => 12,
+        CURLOPT_SSL_VERIFYPEER => true
+    ]);
 
-$response = curl_exec($ch);
-$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-$curlError = curl_error($ch);
-curl_close($ch);
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curlError = curl_error($ch);
+    curl_close($ch);
+
+    if ($response !== false && $httpCode === 200) {
+        break;
+    }
+}
 
 // If cURL error or non-200 (rate limit 429, auth 401/403, etc.), return graceful deterministic fallback with debug insight
 if ($response === false || $httpCode !== 200) {

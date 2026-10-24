@@ -89,21 +89,36 @@ STRICT GUARDRAILS:
                   }
                 };
 
-                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
-                const googleRes = await fetch(endpoint, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(geminiPayload)
-                });
+                const modelsToTry = ['gemini-3.6-flash', 'gemini-3.8-flash', 'gemini-3.7-flash'];
+                let data: any = null;
+                let lastError = '';
 
-                const data = await googleRes.json();
+                for (const modelName of modelsToTry) {
+                  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${encodeURIComponent(apiKey)}`;
+                  try {
+                    const googleRes = await fetch(endpoint, {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(geminiPayload)
+                    });
+                    const d = await googleRes.json();
+                    if (googleRes.ok && d?.candidates?.[0]?.content?.parts?.[0]?.text) {
+                      data = d;
+                      break;
+                    } else {
+                      lastError = d?.error?.message || `HTTP ${googleRes.status}`;
+                    }
+                  } catch (fetchErr: any) {
+                    lastError = fetchErr.message;
+                  }
+                }
+
                 res.setHeader('Content-Type', 'application/json');
 
-                if (!googleRes.ok) {
-                  const errorMsg = data?.error?.message || `Google AI HTTP ${googleRes.status}`;
+                if (!data) {
                   res.end(JSON.stringify({
                     reply: 'API-sleutel niet geconfigureerd of quotum bereikt. Bekijk de artikelen in het middenpaneel.',
-                    debug: errorMsg
+                    debug: lastError
                   }));
                   return;
                 }
