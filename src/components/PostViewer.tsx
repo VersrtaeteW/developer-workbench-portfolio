@@ -16,7 +16,7 @@ import {
   FileCode 
 } from 'lucide-react';
 import { Post } from '@/data/portfolioContent';
-import { ProtectedEmailInline } from './ProtectedEmail';
+import { ProtectedEmailInline, copyTextToClipboard } from './ProtectedEmail';
 
 interface PostViewerProps {
   post: Post;
@@ -47,18 +47,22 @@ export const PostViewer: React.FC<PostViewerProps> = ({
   const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
   const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 
-  const handleCopyCode = (codeText: string, blockId: string) => {
-    navigator.clipboard.writeText(codeText);
-    setCopiedCodeId(blockId);
-    setTimeout(() => setCopiedCodeId(null), 2000);
+  const handleCopyCode = async (codeText: string, blockId: string) => {
+    const success = await copyTextToClipboard(codeText);
+    if (success) {
+      setCopiedCodeId(blockId);
+      setTimeout(() => setCopiedCodeId(null), 2000);
+    }
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
     const url = new URL(window.location.href);
     url.hash = post.slug;
-    navigator.clipboard.writeText(url.toString());
-    setLinkCopied(true);
-    setTimeout(() => setLinkCopied(false), 2000);
+    const success = await copyTextToClipboard(url.toString());
+    if (success) {
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    }
   };
 
   return (

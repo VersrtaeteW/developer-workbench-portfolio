@@ -14,6 +14,46 @@ export const getObfuscatedEmail = (): string => {
 };
 
 /**
+ * Robust clipboard copy helper supporting secure contexts (navigator.clipboard)
+ * and insecure/fallback environments (document.execCommand).
+ */
+export const copyTextToClipboard = async (text: string): Promise<boolean> => {
+  try {
+    if (typeof navigator !== 'undefined' && navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch (err) {
+    console.warn('navigator.clipboard.writeText failed, falling back to execCommand:', err);
+  }
+
+  try {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.top = '0';
+    textArea.style.left = '0';
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = '0';
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    const successful = document.execCommand('copy');
+    document.body.removeChild(textArea);
+    return successful;
+  } catch (fallbackErr) {
+    console.error('Fallback clipboard copy failed:', fallbackErr);
+    return false;
+  }
+};
+
+/**
  * Inline Protected Email component for Markdown documents (e.g. CV / Biografie)
  */
 export const ProtectedEmailInline: React.FC = () => {
@@ -26,13 +66,15 @@ export const ProtectedEmailInline: React.FC = () => {
     setIsRevealed(true);
   };
 
-  const handleCopy = (e: React.MouseEvent) => {
+  const handleCopy = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     const email = getObfuscatedEmail();
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const success = await copyTextToClipboard(email);
+    if (success) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   if (!isRevealed) {
@@ -108,12 +150,14 @@ export const ProtectedEmailHeaderButton: React.FC = () => {
     };
   }, [isOpen]);
 
-  const handleCopy = (e: React.MouseEvent) => {
+  const handleCopy = async (e: React.MouseEvent) => {
     e.stopPropagation();
     const email = getObfuscatedEmail();
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const success = await copyTextToClipboard(email);
+    if (success) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (
