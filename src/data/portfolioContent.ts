@@ -260,7 +260,7 @@ Met mijn huidige afstudeerrichting **AI** binnen de Bachelor Toegepaste Informat
 ## 🤝 Contacteer mij & Portfolio Verkenning
 Geïnteresseerd in mijn profiel, CVO-projecten of mogelijkheden tot samenwerking? Neem gerust contact met mij op via de contactgegevens hierboven of stel direct een vraag aan mijn ingebouwde **Gemini AI Portfolio Agent**.
 
-Blader gerust verder door mijn **CVO-projecten, netwerkevents en gastcolleges** via de navigatieknoppen hieronder of via de Explorer in de linkerzijbalk!`
+Blader gerust verder door mijn **CVO-projecten, netwerkevents en gastcolleges** via de navigatieknop hieronder of via de Explorer in de linkerzijbalk!`
   },
   {
     id: "post-02",
