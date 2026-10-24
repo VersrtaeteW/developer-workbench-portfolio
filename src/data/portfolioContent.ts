@@ -61,7 +61,7 @@ export interface Post {
 
 export const portfolioProfile: Profile = {
   name: "Wout Verstraete",
-  role: "Softwareontwikkelaar & AI Specialist in spe",
+  role: "Softwareontwikkelaar & AI Specialist",
   institution: "Bachelor Toegepaste Informatica (AI) - Howest Brugge",
   location: "Jachthoornstraat 7, 8730 Beernem, België",
   phone: "0499 47 05 46",
@@ -104,7 +104,7 @@ export const portfolioProfile: Profile = {
       details: "Afstudeerrichting AI (Artificial Intelligence)"
     },
     {
-      degree: "Graduaat programmeren",
+      degree: "Graduaat Programmeren",
       school: "Howest, Brugge",
       period: "Sep 2021 – Jul 2023"
     },
@@ -123,16 +123,16 @@ export const portfolioProfile: Profile = {
       description: "Ontwikkelen en onderhouden van C#-applicaties met WPF en ASP.NET, inclusief API- en databasekoppelingen."
     },
     {
-      role: "Helpdesk medewerker",
+      role: "Helpdeskmedewerker",
       company: "Centric",
       period: "Jan 2021 – Sep 2021",
-      description: "Helpdesk voor kassasystemen, behandelen van problemen die de eindgebruiker ondervindt."
+      description: "Technische helpdesk voor kassasystemen, analyseren en oplossen van problemen die eindgebruikers ondervinden."
     },
     {
-      role: "Moni",
+      role: "Monitor (Speelpleinwerking)",
       company: "Gemeente Zedelgem",
       period: "Apr 2017 – Jan 2021",
-      description: "Begeleiden van kinderen (3 tot 14 jaar) tijdens schoolvakanties."
+      description: "Begeleiden en animeren van kinderen (3 tot 14 jaar) tijdens schoolvakanties."
     }
   ],
   internships: [
@@ -140,13 +140,13 @@ export const portfolioProfile: Profile = {
       role: "Mobile developer (Stage)",
       company: "Pionira",
       period: "Feb 2021 – Mei 2021",
-      description: "10 weken stage: migreren van een Xamarin app naar .Net Maui app, nieuwe schermen ontwerpen en implementeren."
+      description: "Tien weken stage: migratie van een Xamarin-applicatie naar .NET MAUI, ontwerpen en implementeren van nieuwe schermen."
     },
     {
       role: "Web developer (Stage)",
       company: "Knoware",
       period: "Apr 2019 – Apr 2019",
-      description: "3 weken stage: website opstellen met bootstrap."
+      description: "Drie weken stage: ontwikkelen en stijlen van websites met behulp van Bootstrap en responsive standaarden."
     }
   ],
   certificates: [
@@ -184,7 +184,7 @@ export const portfolioPosts: Post[] = [
 
 ---
 
-![Wout Verstraete — Softwareontwikkelaar & AI Specialist in spe](/images/wout-verstraete.jpg)
+![Wout Verstraete — Softwareontwikkelaar & AI Specialist](/images/wout-verstraete.jpg)
 
 ---
 
@@ -209,7 +209,7 @@ Ik combineer praktische werkervaring in **C# en .NET** met een passie voor moder
 | Opleiding | Instelling | Periode | Toelichting |
 | :--- | :--- | :--- | :--- |
 | **Bachelor Toegepaste Informatica** | Howest, Brugge | Sep 2025 – Heden | Afstudeerrichting AI |
-| **Graduaat programmeren** | Howest, Brugge | Sep 2021 – Jul 2023 | Focus op software engineering & .NET |
+| **Graduaat Programmeren** | Howest, Brugge | Sep 2021 – Jul 2023 | Focus op software engineering & .NET |
 | **Netwerken en IT (Informaticabeheer)** | Sint-Jozefinstituut, Brugge | Sep 2017 – Jul 2019 | Secundair diploma |
 
 ---
@@ -220,19 +220,19 @@ Ik combineer praktische werkervaring in **C# en .NET** met een passie voor moder
 - Ontwikkelen en onderhouden van C#-applicaties met WPF en ASP.NET.
 - Realisatie van REST API-koppelingen en relationele database-integraties.
 
-### 2. Helpdesk medewerker — Centric
+### 2. Helpdeskmedewerker — Centric
 *(Jan 2021 – Sep 2021)*
 - Technische helpdesk voor kassasystemen.
 - Analyseren en oplossen van hardnekkige gebruikersproblemen onder SLA.
 
 ### 3. Mobile developer (Stage) — Pionira
 *(Feb 2021 – Mei 2021)*
-- 10 weken intensieve stage: migreren van een bestaande Xamarin app naar **.NET MAUI**.
+- 10 weken intensieve stage: migreren van een bestaande Xamarin-applicatie naar **.NET MAUI**.
 - Ontwerpen en implementeren van moderne schermen en dataflows.
 
 ### 4. Web developer (Stage) — Knoware
 *(Apr 2019 – Apr 2019)*
-- 3 weken stage: ontwikkelen en stijlen van websites met Bootstrap en responsive web standaarden.
+- 3 weken stage: ontwikkelen en stijlen van websites met behulp van Bootstrap en responsive webstandaarden.
 
 ---
 
@@ -289,7 +289,7 @@ Blader gerust verder door mijn **CVO-projecten, netwerkevents en gastcolleges** 
 - **Python** (Pandas, NumPy, Scikit-Learn, PyTorch, TensorFlow)
 - **Jupyter Notebooks** voor experimentatie, data cleaning en hyperparameter tuning
 - Tokenization pipelines aangepast aan cuneiform transliteraties
-- Seq2Seq / Transformer architecturen voor sequence vertaling
+- Seq2Seq / Transformer-architecturen voor sequence vertaling
 
 ---
 
@@ -329,13 +329,13 @@ Blader gerust verder door mijn **CVO-projecten, netwerkevents en gastcolleges** 
 
 ## 🛒 Belangrijkste Features
 1. **Prijsvergelijking per Winkel:** Dynamische sortering van prijzen tussen verschillende supermarkten in de regio.
-2. **Crowdsourced Data Invoer:** Gebruikers kunnen barcodes scannen, kassabonnen uploaden en actuele schapprijzen doorgeven.
+2. **Crowdsourced Data-invoer:** Gebruikers kunnen barcodes scannen, kassabonnen uploaden en actuele schapprijzen doorgeven.
 3. **Slimme Boodschappenlijst:** Automatische berekening van de meest voordelige winkelroute voor een geselecteerde lijst producten.
 
 ---
 
 ## 🛠️ Technische Architectuur
-- **Frontend / Client:** C# met Xamarin / .NET MAUI voor cross-platform deployment (Android & iOS).
+- **Frontend / Client:** C# met Xamarin & .NET MAUI voor cross-platform deployment (Android & iOS).
 - **Backend Services:** ASP.NET Core REST API voor snelle en betrouwbare data-uitwisseling.
 - **Data Persistentie:** SQL database met geoptimaliseerde indexen voor razendsnelle prijsqueries.
 
@@ -354,7 +354,7 @@ Blader gerust verder door mijn **CVO-projecten, netwerkevents en gastcolleges** 
 ---
 
 ## 💡 Resultaat
-Integratie van complexe frontend-logica, databasestructuur en API-koppelingen tot één coherent, gebruiksvriendelijk en **release-ready mobiel platform**.`
+Integratie van geavanceerde frontend-logica, databasestructuur en API-koppelingen tot één coherent, gebruiksvriendelijk en **release-ready mobiel platform**.`
   },
   {
     id: "post-04",
@@ -459,7 +459,7 @@ Als student **Toegepaste Informatica met specialisatie in AI** is zo'n beurs het
 
 Mijn doelstelling voor deze beurs was duidelijk afgebakend en tweeledig:
 1. **Peilen naar reële behoeften in het werkveld:** Waar liggen vandaag de knelpunten bij het bouwen van machine learning pipelines, computer vision toepassingen en backend integraties?
-2. **Zoeken naar ontwikkelteams met een hands-on mentaliteit:** Bedrijven waar innovatie, technische ownership en schone code centraal staan.
+2. **Zoeken naar ontwikkelteams met een hands-on mentaliteit:** Bedrijven waar innovatie, technisch eigenaarschap en schone code centraal staan.
 
 In plaats van oppervlakkig visitekaartjes en brochures te verzamelen, ging ik doelgericht het gesprek aan over concrete projecten, tech stacks en actuele stage-opdrachten. Dit leverde direct diepgaandere en meer memorabele contacten op met senior engineers en recruiters.
 
@@ -606,3 +606,4 @@ Tijdens een intensief internationaal programma aan de **University of Economics 
 - **Academische en professionele verbreding:** Een waardevolle aanvulling op het software engineering en AI-curriculum van Howest.`
   }
 ];
+
