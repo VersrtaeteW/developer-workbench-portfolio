@@ -114,7 +114,7 @@ $geminiPayload = [
 ];
 
 // 4. CALL GEMINI VIA CURL
-$endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . urlencode($geminiApiKey);
+$endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=" . urlencode($geminiApiKey);
 
 $ch = curl_init($endpoint);
 curl_setopt_array($ch, [
