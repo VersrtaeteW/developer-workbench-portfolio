@@ -1,16 +1,18 @@
 'use client';
 
 import React from 'react';
-import { 
-  GitBranch, 
-  Check, 
-  Bot, 
-  Terminal, 
-  Bell, 
-  Cpu, 
-  Wifi, 
+import {
+  GitBranch,
+  Check,
+  Bot,
+  Terminal,
+  Bell,
+  Cpu,
+  Wifi,
   Code2,
-  Columns
+  Columns,
+  AlertCircle,
+  AlertTriangle
 } from 'lucide-react';
 import { Post } from '@/data/portfolioContent';
 
@@ -46,9 +48,10 @@ export const StatusBar: React.FC<StatusBarProps> = ({
               onToggleExplorer();
             }
           }}
-          className={`flex items-center gap-1 hover:text-[#e6edf3] transition-colors ${
-            (mobileTab ? mobileTab === 'explorer' : isExplorerOpen) ? 'text-[#10b981]' : 'text-[#8b949e]'
-          }`}
+          className={`flex items-center gap-1 hover:text-[#e6edf3] transition-colors ${(typeof window !== 'undefined' && window.innerWidth < 1024 ? mobileTab === 'explorer' : isExplorerOpen)
+              ? 'text-[#10b981]'
+              : 'text-[#8b949e]'
+            }`}
           title="Toggle Explorer Sidebar"
         >
           <Columns className="w-3 h-3" />
@@ -56,22 +59,29 @@ export const StatusBar: React.FC<StatusBarProps> = ({
         </button>
 
         {/* Git Branch (Clean, fully synced with origin/main) */}
-        <div className="flex items-center gap-1 text-[#e6edf3] hover:text-[#58a6ff] cursor-pointer" title="Git branch: main (synced)">
+        <div className="flex items-center gap-1.5 text-[#e6edf3] hover:text-[#58a6ff] cursor-pointer" title="Git branch: main (synced)">
           <GitBranch className="w-3 h-3 text-[#10b981]" />
           <span>main</span>
+          <Check className="w-3.5 h-3.5 text-[#7ee787]" />
         </div>
 
-        {/* Sync Status */}
-        <div className="flex items-center gap-1 text-[#7ee787]">
-          <Check className="w-3 h-3" />
-          <span className="hidden sm:inline">0 errors, 0 warnings</span>
+        {/* Problems / Diagnostics Status */}
+        <div className="flex items-center gap-2 text-[#8b949e]" title="0 errors, 0 warnings">
+          <div className="flex items-center gap-0.5">
+            <AlertCircle className="w-3 h-3" />
+            <span>0</span>
+          </div>
+          <div className="flex items-center gap-0.5">
+            <AlertTriangle className="w-3 h-3" />
+            <span>0</span>
+          </div>
         </div>
       </div>
 
       {/* Middle Status Indicator */}
       <div className="hidden md:flex items-center gap-2 text-[#8b949e]">
         <Wifi className="w-3 h-3 text-[#10b981]" />
-        <span>Howest Portfolio v2.0 (Active)</span>
+        <span>works-on-my-machine-v2.0 (Active)</span>
       </div>
 
       {/* Right Status Controls */}
@@ -95,11 +105,10 @@ export const StatusBar: React.FC<StatusBarProps> = ({
               onToggleAiPanel();
             }
           }}
-          className={`flex items-center gap-1.5 px-2 py-0.5 rounded transition-all cursor-pointer ${
-            (mobileTab === 'agent' || (isAiPanelOpen && window.innerWidth >= 1024))
-              ? 'bg-[#10b981] text-[#0d1117] font-semibold shadow-sm' 
+          className={`flex items-center gap-1.5 px-2 py-0.5 rounded transition-all cursor-pointer ${(mobileTab === 'agent' || (isAiPanelOpen && window.innerWidth >= 1024))
+              ? 'bg-[#10b981] text-[#0d1117] font-semibold shadow-sm'
               : 'hover:bg-[#21262d] text-[#8b949e] hover:text-[#e6edf3]'
-          }`}
+            }`}
           title="Toggle Gemini AI Portfolio Assistant"
         >
           <Bot className="w-3 h-3" />

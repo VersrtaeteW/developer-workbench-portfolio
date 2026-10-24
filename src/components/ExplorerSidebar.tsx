@@ -124,7 +124,7 @@ export const ExplorerSidebar: React.FC<ExplorerSidebarProps> = ({
       <div className="flex-1 overflow-y-auto py-2 text-xs">
         {/* Workspace Root Folder Label */}
         <div className="px-3 py-1 flex items-center gap-1.5 text-[#8b949e] font-semibold text-[11px] tracking-wide uppercase">
-          <span>PORTFOLIO-HOWEST</span>
+          <span>WORKBENCH-WORKSPACE</span>
         </div>
 
         {categories.map((category) => {

@@ -24,9 +24,9 @@ body {
   width: 100vw;
 }
 
-/* Custom dark-emerald text selection styling */
+/* Custom blue text selection styling (matches user interaction blue) */
 ::selection {
-  background-color: rgba(16, 185, 129, 0.35);
+  background-color: rgba(31, 111, 235, 0.45);
   color: #ffffff;
 }
 
