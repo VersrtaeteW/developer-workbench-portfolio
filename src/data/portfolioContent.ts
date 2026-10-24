@@ -246,7 +246,21 @@ Ik combineer praktische werkervaring in **C# en .NET** met een passie voor moder
 - **Certificaat Digital Transformation** — University of Economics in Katowice, Poland
 - **Nederlands:** Moedertaal
 - **Engels:** Vloeiend / Professioneel
-- **Frans:** Goede basiskennis`
+- **Frans:** Goede basiskennis
+
+---
+
+## 🤖 AI & Intelligent Systems: De Toekomst van Development
+Met mijn huidige afstudeerrichting **AI** binnen de Bachelor Toegepaste Informatica aan Howest, richt ik mij op de convergentie tussen traditionele software engineering (C#, .NET, web) en intelligente systemen (LLM's, machine learning modellen, computer vision).
+
+> *"De toekomst van softwareontwikkeling behoort toe aan developers die zowel diepgaande engineering discipline als state-of-the-art AI-technieken beheersen."*
+
+---
+
+## 🤝 Contacteer mij & Portfolio Verkenning
+Geïnteresseerd in mijn profiel, CVO-projecten of mogelijkheden tot samenwerking? Neem gerust contact met mij op via de contactgegevens hierboven of stel direct een vraag aan mijn ingebouwde **Gemini AI Portfolio Agent**.
+
+Blader gerust verder door mijn **CVO-projecten, netwerkevents en gastcolleges** via de navigatieknoppen hieronder of via de Explorer in de linkerzijbalk!`
   },
   {
     id: "post-02",
@@ -427,42 +441,37 @@ Snelle, foutloze deployments en identieke test- en productieomgevingen op zowel 
   {
     id: "post-06",
     slug: "vrij-extracurriculair-internationale-ervaring-en-ai",
-    title: "Vrij & Extracurriculair: Digital Transformation & AI Verkenning",
+    title: "Vrij & Extracurriculair: Certificaat Digital Transformation (Katowice, Polen)",
     date: "2026-10-24",
     category: "Vrij & Extracurriculair",
-    tags: ["Extracurriculair", "AI", "Digital Transformation", "Polen", "Howest"],
-    excerpt: "Internationale certificering in Katowice (Polen), buitenschoolse projecten, community engagement en de toekomst van AI in software engineering.",
-    readTime: "5 min leestijd",
-    content: `Naast het curriculum investeer ik doelbewust in internationale verrijking, certificeringen en de nieuwste ontwikkelingen in Artificial Intelligence.
+    tags: ["Extracurriculair", "Digital Transformation", "Polen", "Howest", "Certificering"],
+    excerpt: "Internationale certificering aan de University of Economics in Katowice (Polen): bedrijfstransformaties, procesoptimalisatie en multicultureel teamwork.",
+    readTime: "4 min leestijd",
+    content: `Naast het curriculum investeer ik doelbewust in internationale verrijking, certificeringen en de praktische impact van technologische innovaties op bedrijfsprocessen.
 
 ---
 
-> 📷 **Foto Placeholder: University of Economics Katowice & Internationaal Team**  
-> *(Plaats hier een foto van de campus in Polen, projectteam of leermoment: bijv. \`![Katowice Polen Universiteit](/images/katowice-polen-program.jpg)\`)*
+![Internationaal Programma aan de University of Economics in Katowice](/images/katowice-polen-program.png)
 
 ---
 
 ## 🌍 Certificaat Digital Transformation in Polen
 Tijdens een intensief internationaal programma aan de **University of Economics in Katowice, Poland**, behaalde ik het officiële *Certificaat Digital Transformation*. 
-- Diepgaande cases rondom digitale bedrijfstransformaties, procesoptimalisatie en de integratie van geautomatiseerde beslissingssystemen.
-- Samenwerking in internationale teams met focus op interculturele communicatie en innovatiestrategieën.
+
+- **Diepgaande business cases:** Analyse van digitale bedrijfstransformaties, procesoptimalisatie en de integratie van geautomatiseerde beslissingssystemen.
+- **Internationaal teamwork:** Samenwerking in multidisciplinaire en multiculturele teams met focus op innovatiestrategieën en interculturele communicatie.
+- **Bruggen bouwen:** Het verbinden van enterprise IT-oplossingen met reële operationele bedrijfsuitdagingen.
 
 ---
 
-> 📷 **Foto / Document Placeholder: Certificaat Digital Transformation**  
-> *(Plaats hier een foto of scan van je behaalde certificaat: bijv. \`![Certificaat Digital Transformation](/images/certificaat-digital-transformation.jpg)\`)*
+![Certificaat Digital Transformation - Katowice](/images/certificaat-digital-transformation.jpg)
 
 ---
 
-## 🤖 AI & Intelligent Systems: De Toekomst van Development
-Met mijn huidige afstudeerrichting **AI** binnen de Bachelor Toegepaste Informatica aan Howest, richt ik mij op de convergentie tussen traditionele software engineering (C#, .NET, web) en intelligente systemen (LLM's, machine learning modellen, computer vision).
-
-> *"De toekomst van softwareontwikkeling behoort toe aan developers die zowel diepgaande engineering discipline als state-of-the-art AI-technieken beheersen."*
-
----
-
-## 🤝 Contacteer mij
-Geïnteresseerd in mijn profiel, CVO-projecten of mogelijkheden tot samenwerking? Gebruik gerust de contactgegevens bovenaan of stel direct een vraag aan mijn ingebouwde **Gemini AI Portfolio Agent**!`
+## 📌 Belangrijkste Takeaways & Vaardigheden
+- **Internationale samenwerking:** Ervaring met het uitwerken van digitaliseringsstrategieën binnen een internationale context.
+- **Strategisch inzicht:** Dieper inzicht in hoe software, data pipelines en automatisering meetbare bedrijfswaarde creëren.
+- **Academische en professionele verbreding:** Een waardevolle aanvulling op het software engineering en AI-curriculum van Howest.`
   },
   {
     id: "post-07",
@@ -580,7 +589,7 @@ Dit vraagt om concrete technische waarborgen in het ontwikkelproces:
 
 ---
 
-![EU AI Act Presentatie & Risicoclassificatie Slide](/images/ai-act-slide.jpg)
+![EU AI Act Presentatie & Verboden AI Slide](/images/ai-act-slide.jpg)
 
 ---
 
