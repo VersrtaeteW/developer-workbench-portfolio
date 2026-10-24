@@ -1,17 +1,18 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { 
   Bot, 
   Send, 
   Sparkles, 
   X, 
   RefreshCw, 
-  ShieldCheck, 
   User, 
   Mail, 
-  Layers, 
-  Cpu
+  Cpu,
+  AlertCircle
 } from 'lucide-react';
 import { Post, Profile } from '@/data/portfolioContent';
 
@@ -45,7 +46,7 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
     {
       id: 'welcome',
       role: 'assistant',
-      content: `Hallo! Ik ben de **AI Portfolio Agent** van ${profile.name}. Stel mij gerust vragen over zijn Howest-opleiding, CVO-projecten (1-4), curriculum vitae of specifieke blogartikelen!`,
+      content: `Hallo! Ik ben de **AI Portfolio Agent** van ${profile.name}. Stel gerust vragen over zijn Howest-opleiding, projecten, CV of blogartikelen!`,
       timestamp: 'Zojuist'
     }
   ]);
@@ -85,7 +86,7 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
     setIsLoading(true);
 
     try {
-      // Build history payload for Gemini
+      // Build history payload for API
       const historyPayload = messages.slice(-6).map((m) => ({
         role: m.role,
         parts: m.content
@@ -107,12 +108,11 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
         if (res.ok) {
           const data = await res.json();
           if (data.debug) {
-            console.warn('[Gemini Proxy Debug]:', data.debug);
+            console.warn('[AI Proxy Debug]:', data.debug);
           }
           assistantReply = data.reply || (data.error ? `Foutmelding: ${data.error}` : '');
         }
       } catch (networkErr) {
-        // Fallback for local Vite dev server without active PHP runtime
         console.warn('Backend /api/chat.php unreachable or in local dev mode:', networkErr);
       }
 
@@ -162,8 +162,6 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
     ]);
   };
 
-  // Dynamic label & question for current active post's stack
-  const activePostTitle = activePost?.title || 'dit project';
   const dynamicStackPrompt = activePost 
     ? `Welke stack, technologieën en tools werden gebruikt in "${activePost.title}"?`
     : `Welke stack werd gebruikt in dit project?`;
@@ -197,10 +195,7 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
             <Bot className="w-4 h-4 text-[#10b981]" />
             <span className="w-2 h-2 rounded-full bg-[#10b981] absolute -top-0.5 -right-0.5 animate-pulse" />
           </div>
-          <span>Gemini Portfolio Agent</span>
-          <span className="text-[10px] px-1.5 py-0.2 rounded bg-[#10b981]/20 text-[#10b981] border border-[#10b981]/30">
-            Flash 1.5
-          </span>
+          <span>Portfolio Agent</span>
         </div>
 
         <div className="flex items-center gap-1">
@@ -221,21 +216,8 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
         </div>
       </div>
 
-      {/* Guardrail Context Tag */}
-      <div className="px-3 py-1.5 bg-[#0d1117] border-b border-[#30363d] flex items-center justify-between text-[11px] text-[#8b949e]">
-        <span className="flex items-center gap-1 text-[#10b981]">
-          <ShieldCheck className="w-3 h-3" />
-          Strikte Portfolio Guardrails
-        </span>
-        {activePost && (
-          <span className="truncate max-w-[140px] text-[10px] text-[#58a6ff]">
-            Context: {activePost.slug}
-          </span>
-        )}
-      </div>
-
-      {/* Chat Messages Stream / Log */}
-      <div className="flex-1 overflow-y-auto p-3 space-y-3 text-xs">
+      {/* Chat Messages Stream */}
+      <div className="flex-1 overflow-y-auto p-3 space-y-3 text-xs select-text">
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -259,13 +241,21 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
             </div>
 
             <div
-              className={`p-3 rounded-lg leading-relaxed max-w-[92%] whitespace-pre-wrap transition-all shadow-sm ${
+              className={`p-3 rounded-lg leading-relaxed max-w-[92%] transition-all shadow-sm select-text ${
                 msg.role === 'user'
-                  ? 'bg-[#1f6feb] text-white rounded-br-none'
+                  ? 'bg-[#1f6feb] text-white rounded-br-none whitespace-pre-wrap'
                   : 'bg-[#21262d] text-[#e6edf3] border border-[#30363d] rounded-bl-none'
               }`}
             >
-              {msg.content}
+              {msg.role === 'assistant' ? (
+                <div className="space-y-2 [&_p]:mb-1.5 [&_p:last-child]:mb-0 [&_ul]:pl-4 [&_ul]:list-disc [&_ol]:pl-4 [&_ol]:list-decimal [&_li]:mb-1 [&_strong]:text-[#f0f6fc] [&_strong]:font-semibold [&_code]:bg-[#161b22] [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-[#f0883e] [&_code]:text-[11px]">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {msg.content}
+                  </ReactMarkdown>
+                </div>
+              ) : (
+                msg.content
+              )}
             </div>
           </div>
         ))}
@@ -273,7 +263,7 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
         {isLoading && (
           <div className="flex items-center gap-2 p-3 rounded-lg bg-[#21262d] border border-[#30363d] text-[#8b949e] w-fit">
             <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#10b981]" />
-            <span className="text-xs">Gemini Flash analyseert context...</span>
+            <span className="text-xs">Antwoord genereren...</span>
           </div>
         )}
 
@@ -282,12 +272,11 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
 
       {/* Pre-made Quick Action Buttons */}
       <div className="p-2 border-t border-[#30363d] bg-[#0d1117]/80 space-y-1.5">
-        <div className="text-[10px] text-[#8b949e] font-semibold uppercase tracking-wider flex items-center justify-between px-0.5">
+        <div className="text-[10px] text-[#8b949e] font-semibold uppercase tracking-wider flex items-center px-0.5">
           <span className="flex items-center gap-1">
             <Sparkles className="w-3 h-3 text-[#10b981]" />
             Snelle Acties
           </span>
-          <span className="text-[9px] text-[#58a6ff]">1-klik prompts</span>
         </div>
 
         <div className="flex flex-col gap-1">
@@ -296,7 +285,7 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
               key={idx}
               onClick={() => sendMessage(action.prompt)}
               disabled={isLoading}
-              className="text-left text-[11px] text-[#c9d1d9] hover:text-[#10b981] bg-[#161b22] hover:bg-[#21262d] px-2.5 py-1.5 rounded-md transition-all border border-[#30363d]/80 hover:border-[#10b981]/50 flex items-center justify-between group disabled:opacity-50"
+              className="text-left text-[11px] text-[#c9d1d9] hover:text-[#10b981] bg-[#161b22] hover:bg-[#21262d] px-2.5 py-1.5 rounded-md transition-all border border-[#30363d]/80 hover:border-[#10b981]/50 flex items-center justify-between group disabled:opacity-50 cursor-pointer"
             >
               <span className="truncate pr-1 group-hover:translate-x-0.5 transition-transform">
                 {action.label}
@@ -323,17 +312,22 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
           <button
             onClick={() => sendMessage()}
             disabled={!inputMessage.trim() || isLoading}
-            className="absolute right-2 p-1.5 rounded-md bg-[#10b981] text-[#0d1117] hover:bg-[#10b981]/90 disabled:opacity-40 disabled:hover:bg-[#10b981] transition-all font-semibold"
+            className="absolute right-2 p-1.5 rounded-md bg-[#10b981] text-[#0d1117] hover:bg-[#10b981]/90 disabled:opacity-40 disabled:hover:bg-[#10b981] transition-all font-semibold cursor-pointer"
             title="Verstuur"
           >
             <Send className="w-3.5 h-3.5" />
           </button>
         </div>
-        <div className="mt-1 flex items-center justify-between text-[10px] text-[#8b949e]">
+        <div className="mt-1.5 flex items-center justify-between text-[10px] text-[#8b949e]">
           <span>Druk op Enter om te verzenden</span>
           <span>Shift + Enter voor nieuwe regel</span>
+        </div>
+        <div className="mt-1 text-center text-[10px] text-[#484f58] select-none flex items-center justify-center gap-1">
+          <AlertCircle className="w-2.5 h-2.5 opacity-60" />
+          <span>AI kan fouten maken. Controleer belangrijke informatie.</span>
         </div>
       </div>
     </aside>
   );
 };
+

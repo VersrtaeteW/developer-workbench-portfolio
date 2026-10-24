@@ -20,6 +20,8 @@ interface StatusBarProps {
   onToggleAiPanel: () => void;
   isExplorerOpen: boolean;
   onToggleExplorer: () => void;
+  mobileTab?: 'explorer' | 'post' | 'agent';
+  onSetMobileTab?: (tab: 'explorer' | 'post' | 'agent') => void;
 }
 
 export const StatusBar: React.FC<StatusBarProps> = ({
@@ -27,7 +29,9 @@ export const StatusBar: React.FC<StatusBarProps> = ({
   isAiPanelOpen,
   onToggleAiPanel,
   isExplorerOpen,
-  onToggleExplorer
+  onToggleExplorer,
+  mobileTab,
+  onSetMobileTab
 }) => {
   return (
     <footer className="h-6 bg-[#161b22] border-t border-[#30363d] flex items-center justify-between px-3 text-[11px] text-[#8b949e] select-none z-30 font-mono">
@@ -35,9 +39,15 @@ export const StatusBar: React.FC<StatusBarProps> = ({
       <div className="flex items-center gap-3">
         {/* Toggle Explorer Icon Button */}
         <button
-          onClick={onToggleExplorer}
+          onClick={() => {
+            if (onSetMobileTab && window.innerWidth < 1024) {
+              onSetMobileTab(mobileTab === 'explorer' ? 'post' : 'explorer');
+            } else {
+              onToggleExplorer();
+            }
+          }}
           className={`flex items-center gap-1 hover:text-[#e6edf3] transition-colors ${
-            isExplorerOpen ? 'text-[#10b981]' : 'text-[#8b949e]'
+            (mobileTab ? mobileTab === 'explorer' : isExplorerOpen) ? 'text-[#10b981]' : 'text-[#8b949e]'
           }`}
           title="Toggle Explorer Sidebar"
         >
@@ -45,10 +55,10 @@ export const StatusBar: React.FC<StatusBarProps> = ({
           <span className="hidden sm:inline">Explorer</span>
         </button>
 
-        {/* Git Branch */}
-        <div className="flex items-center gap-1 text-[#e6edf3] hover:text-[#58a6ff] cursor-pointer">
+        {/* Git Branch (Clean, fully synced with origin/main) */}
+        <div className="flex items-center gap-1 text-[#e6edf3] hover:text-[#58a6ff] cursor-pointer" title="Git branch: main (synced)">
           <GitBranch className="w-3 h-3 text-[#10b981]" />
-          <span>main*</span>
+          <span>main</span>
         </div>
 
         {/* Sync Status */}
@@ -78,9 +88,15 @@ export const StatusBar: React.FC<StatusBarProps> = ({
 
         {/* AI Assistant Toggle Button */}
         <button
-          onClick={onToggleAiPanel}
+          onClick={() => {
+            if (onSetMobileTab && window.innerWidth < 1024) {
+              onSetMobileTab(mobileTab === 'agent' ? 'post' : 'agent');
+            } else {
+              onToggleAiPanel();
+            }
+          }}
           className={`flex items-center gap-1.5 px-2 py-0.5 rounded transition-all cursor-pointer ${
-            isAiPanelOpen 
+            (mobileTab === 'agent' || (isAiPanelOpen && window.innerWidth >= 1024))
               ? 'bg-[#10b981] text-[#0d1117] font-semibold shadow-sm' 
               : 'hover:bg-[#21262d] text-[#8b949e] hover:text-[#e6edf3]'
           }`}
@@ -88,7 +104,7 @@ export const StatusBar: React.FC<StatusBarProps> = ({
         >
           <Bot className="w-3 h-3" />
           <span>AI Agent</span>
-          {isAiPanelOpen ? (
+          {(mobileTab === 'agent' || (isAiPanelOpen && window.innerWidth >= 1024)) ? (
             <span className="w-1.5 h-1.5 rounded-full bg-[#0d1117]" />
           ) : (
             <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />

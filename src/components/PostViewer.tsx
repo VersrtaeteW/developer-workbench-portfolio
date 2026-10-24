@@ -54,23 +54,24 @@ export const PostViewer: React.FC<PostViewerProps> = ({
   return (
     <main className="flex-1 h-full bg-[#0d1117] overflow-y-auto flex flex-col">
       {/* Editor Tab Header */}
-      <div className="h-10 border-b border-[#30363d] bg-[#161b22] px-4 flex items-center justify-between flex-shrink-0">
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 px-3 py-1 bg-[#0d1117] border-t-2 border-t-[#10b981] border-x border-[#30363d] text-xs font-mono text-[#e6edf3] rounded-t-sm">
-            <FileCode className="w-3.5 h-3.5 text-[#10b981]" />
-            <span>{post.slug}.md</span>
-            <span className="text-[10px] text-[#8b949e] ml-1">●</span>
+      <div className="h-9 border-b border-[#30363d] bg-[#161b22] px-2 sm:px-3 flex items-center justify-between flex-shrink-0 gap-2">
+        <div className="flex items-center h-full min-w-0">
+          <div className="flex items-center gap-1.5 px-2.5 sm:px-3.5 h-full bg-[#0d1117] border-t-2 border-t-[#10b981] border-r border-[#30363d] text-xs font-mono text-[#e6edf3] relative -mb-[1px] min-w-0 truncate">
+            <FileCode className="w-3.5 h-3.5 text-[#10b981] flex-shrink-0" />
+            <span className="truncate">{post.slug}.md</span>
+            <span className="text-[10px] text-[#8b949e] ml-1 flex-shrink-0">●</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           <button
             onClick={() => onAskAiAboutPost(post)}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#10b981]/10 text-[#10b981] hover:bg-[#10b981]/20 border border-[#10b981]/30 text-xs font-medium transition-all"
+            className="flex items-center gap-1.5 px-2 py-1 sm:px-2.5 rounded bg-[#10b981]/10 text-[#10b981] hover:bg-[#10b981]/20 border border-[#10b981]/30 text-xs font-medium transition-all"
             title="Vraag de AI Agent over deze post"
           >
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>Vraag AI over dit document</span>
+            <BookOpen className="w-3.5 h-3.5 flex-shrink-0" />
+            <span className="hidden sm:inline">Vraag AI over dit document</span>
+            <span className="sm:hidden">Vraag AI</span>
           </button>
 
           <button
@@ -86,7 +87,7 @@ export const PostViewer: React.FC<PostViewerProps> = ({
             ) : (
               <>
                 <Share2 className="w-3.5 h-3.5" />
-                <span>Delen</span>
+                <span className="hidden xs:inline sm:inline">Delen</span>
               </>
             )}
           </button>
@@ -94,9 +95,9 @@ export const PostViewer: React.FC<PostViewerProps> = ({
       </div>
 
       {/* Article Content Container */}
-      <div className="flex-1 p-6 md:p-10 max-w-4xl mx-auto w-full">
+      <div className="flex-1 p-4 sm:p-6 md:p-10 max-w-4xl mx-auto w-full select-text">
         {/* Document Metadata Header */}
-        <header className="pb-6 mb-8 border-b border-[#30363d]">
+        <header className="pb-5 sm:pb-6 mb-6 sm:mb-8 border-b border-[#30363d] select-text">
           <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="px-2.5 py-0.5 rounded text-xs font-medium bg-[#1f6feb]/20 text-[#58a6ff] border border-[#1f6feb]/40">
               {post.category}
@@ -112,7 +113,7 @@ export const PostViewer: React.FC<PostViewerProps> = ({
             </span>
           </div>
 
-          <h1 className="text-2xl md:text-3xl font-extrabold text-[#f0f6fc] tracking-tight leading-snug mb-3">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#f0f6fc] tracking-tight leading-snug mb-3">
             {post.title}
           </h1>
 
@@ -134,10 +135,17 @@ export const PostViewer: React.FC<PostViewerProps> = ({
         </header>
 
         {/* Markdown Body with Syntax Highlighting Codeblocks */}
-        <article className="prose-workbench">
+        <article className="prose-workbench select-text">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
+              table({ children, ...props }) {
+                return (
+                  <div className="prose-table-container">
+                    <table {...props}>{children}</table>
+                  </div>
+                );
+              },
               code({ node, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || '');
                 const codeString = String(children).replace(/\n$/, '');
@@ -173,7 +181,7 @@ export const PostViewer: React.FC<PostViewerProps> = ({
                         )}
                       </button>
                     </div>
-                    <pre className="p-4 text-xs font-mono overflow-x-auto text-[#e6edf3] leading-relaxed">
+                    <pre className="p-3 sm:p-4 text-xs font-mono overflow-x-auto text-[#e6edf3] leading-relaxed">
                       <code>{children}</code>
                     </pre>
                   </div>

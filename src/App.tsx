@@ -140,6 +140,12 @@ export default function App() {
         onToggleAiPanel={() => setIsAiPanelOpen((prev) => !prev)}
         isExplorerOpen={isExplorerOpen}
         onToggleExplorer={() => setIsExplorerOpen((prev) => !prev)}
+        mobileTab={mobileTab}
+        onSetMobileTab={(tab) => {
+          setMobileTab(tab);
+          if (tab === 'agent') setIsAiPanelOpen(true);
+          if (tab === 'explorer') setIsExplorerOpen(true);
+        }}
       />
     </div>
   );
