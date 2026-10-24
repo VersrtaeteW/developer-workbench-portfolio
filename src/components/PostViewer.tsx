@@ -160,11 +160,40 @@ export const PostViewer: React.FC<PostViewerProps> = ({
                   </a>
                 );
               },
+              img({ src, alt, ...props }) {
+                return (
+                  <figure className="my-6 rounded-lg border border-[#30363d] overflow-hidden bg-[#161b22] shadow-xl">
+                    <img
+                      src={src}
+                      alt={alt || ''}
+                      className="w-full max-h-[500px] object-cover"
+                      loading="lazy"
+                      {...props}
+                    />
+                    {alt && (
+                      <figcaption className="px-4 py-2 bg-[#0d1117] text-xs text-[#8b949e] border-t border-[#30363d] italic flex items-center gap-2">
+                        <span className="text-[#10b981] font-semibold">📷</span>
+                        <span>{alt}</span>
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              },
               table({ children, ...props }) {
                 return (
                   <div className="prose-table-container">
                     <table {...props}>{children}</table>
                   </div>
+                );
+              },
+              blockquote({ children, ...props }) {
+                return (
+                  <blockquote 
+                    className="my-4 p-3 sm:p-3.5 rounded-lg border border-dashed border-[#10b981]/50 bg-[#161b22] text-xs sm:text-sm text-[#c9d1d9] not-italic shadow-sm border-l-4 border-l-[#10b981]"
+                    {...props}
+                  >
+                    {children}
+                  </blockquote>
                 );
               },
               code({ node, className, children, ...props }) {

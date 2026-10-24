@@ -52,7 +52,7 @@ export interface Post {
   slug: string;
   title: string;
   date: string;
-  category: "Biografie & CV" | "CVO Projecten (1-4)" | "Vrij & Extracurriculair";
+  category: "Biografie & CV" | "CVO Projecten (1-4)" | "Netwerkevents & Gastcolleges" | "Vrij & Extracurriculair";
   tags: string[];
   excerpt: string;
   readTime: string;
@@ -180,9 +180,12 @@ export const portfolioPosts: Post[] = [
     tags: ["Biografie", "CV", "Wout Verstraete", "Howest", "AI", "C#"],
     excerpt: "Officiële biografie, professionele loopbaan, opleidingen bij Howest en technisch competentieprofiel van Wout Verstraete.",
     readTime: "4 min leestijd",
-    content: `# Biografie, Professioneel Profiel & Curriculum Vitae
+    content: `Welkom op het interactieve Developer Workbench Portfolio van **Wout Verstraete**.
 
-Welkom op het interactieve Developer Workbench Portfolio van **Wout Verstraete**.
+---
+
+> 📷 **Foto Placeholder: Professionele Profielfoto / Portret**  
+> *(Plaats hier je profielfoto: bijv. \`![Wout Verstraete - Portret](/images/wout-verstraete.jpg)\`)*
 
 ---
 
@@ -234,6 +237,11 @@ Ik combineer praktische werkervaring in **C# en .NET** met een passie voor moder
 
 ---
 
+> 📷 **Foto / Document Placeholder: CV & Certificaten Overzicht**  
+> *(Plaats hier optioneel een screenshot van je CV of diploma: bijv. \`![Certificaat & CV](/images/cv-diploma-preview.jpg)\`)*
+
+---
+
 ## 📜 Certificaten & Talenkennis
 - **Certificaat Digital Transformation** — University of Economics in Katowice, Poland
 - **Nederlands:** Moedertaal
@@ -249,9 +257,12 @@ Ik combineer praktische werkervaring in **C# en .NET** met een passie voor moder
     tags: ["CVO-1", "Python", "Machine Learning", "NLP", "PyTorch", "Data Preprocessing"],
     excerpt: "Ontwikkeling van een machine learning model om historische Akkadische spijkerschrift-teksten automatisch te vertalen naar het Engels.",
     readTime: "6 min leestijd",
-    content: `# CVO Project 1: Akkadian to English Translator
+    content: `In dit project ontwikkelde ik een geavanceerde **machine learning vertaaltool** om historische Akkadische spijkerschrift-teksten automatisch te vertalen naar het Engels.
 
-In dit baanbrekende project ontwikkelde ik een geavanceerde **machine learning vertaaltool** om historische Akkadische teksten automatisch te vertalen naar het Engels.
+---
+
+> 📷 **Foto / Screenshot Placeholder: Kleitablet / Cuneiform Taaldataset & Transliterator Interface**  
+> *(Plaats hier een screenshot van je modeloutput, notebook of historische bron: bijv. \`![Akkadisch NLP Model Output](/images/akkadian-translator-demo.png)\`)*
 
 ---
 
@@ -271,25 +282,14 @@ In dit baanbrekende project ontwikkelde ik een geavanceerde **machine learning v
 ---
 
 ## 💻 Data Pipeline & Preprocessing Snippet
-\`\`\`python
-import pandas as pd
-import torch
-import torch.nn as nn
 
-def preprocess_akkadian_corpus(raw_filepath: str):
-    """
-    Schoont transliteraties op en bouwt vocabulary mappings voor Akkadisch-Engelse paren.
-    """
-    df = pd.read_csv(raw_filepath)
-    df['clean_akkadian'] = df['transliteration'].str.lower().str.strip()
-    df['clean_english'] = df['translation'].str.strip()
-    
-    # Filter onvolledige of beschadigde fragmenten
-    df = df.dropna(subset=['clean_akkadian', 'clean_english'])
-    return df
+> 💻 **Code Placeholder: Akkadian Data Preprocessing & Model Pipeline**  
+> *(Plaats hier je eigen Python code snippet uit je repository, bijv. tokenization, data cleaning of PyTorch model training)*
 
-print("Akkadian Corpus successfully parsed and indexed.")
-\`\`\`
+---
+
+> 📷 **Foto / Diagram Placeholder: Machine Learning Model Architectuur & Validatiecurve**  
+> *(Plaats hier een schema van je modelarchitectuur of evaluatiegrafieken: bijv. \`![NLP Model Architectuur](/images/akkadian-architecture.png)\`)*
 
 ---
 
@@ -306,9 +306,12 @@ print("Akkadian Corpus successfully parsed and indexed.")
     tags: ["CVO-2", "C#", "Xamarin", ".NET MAUI", "SQL", "REST-API"],
     excerpt: "Mobiele applicatie die de voordeligste producten per supermarkt toont op basis van realtime crowdsourced prijsdata.",
     readTime: "7 min leestijd",
-    content: `# CVO Project 2: ShopR — Mobiele Boodschappen App
+    content: `**ShopR** is een release-ready mobiele applicatie ontworpen om consumenten te helpen besparen door realtime de voordeligste producten per winkel te vergelijken op basis van crowdsourced data.
 
-**ShopR** is een release-ready mobiele applicatie ontworpen om consumenten te helpen besparen door realtime de voordeligste producten per winkel te vergelijken op basis van crowdsourced data.
+---
+
+> 📷 **Foto / Screenshot Placeholder: ShopR Mobiele App Mockups & UI Schermen**  
+> *(Plaats hier screenshots van de app: bijv. barcodescanner, prijsvergelijking of winkelmandje: bijv. \`![ShopR App Schermen](/images/shopr-screens.png)\`)*
 
 ---
 
@@ -327,27 +330,14 @@ print("Akkadian Corpus successfully parsed and indexed.")
 ---
 
 ## 📐 C# API Integratie Code Snippet
-\`\`\`csharp
-public class PriceLookupService : IPriceLookupService
-{
-    private readonly HttpClient _httpClient;
-    private const string BaseApiUrl = "https://api.shopr.app/v1/prices";
 
-    public PriceLookupService(HttpClient httpClient)
-    {
-        _httpClient = httpClient;
-    }
+> 💻 **Code Placeholder: C# / .NET MAUI Service & API Integratie**  
+> *(Plaats hier je eigen C# code snippet uit de ShopR codebase, bijv. PriceLookupService, database helper of ViewModels)*
 
-    public async Task<List<StorePriceDto>> GetBestPricesForBasketAsync(List<string> productEans)
-    {
-        var response = await _httpClient.PostAsJsonAsync($"{BaseApiUrl}/compare", productEans);
-        response.EnsureSuccessStatusCode();
+---
 
-        var rankedStores = await response.Content.ReadFromJsonAsync<List<StorePriceDto>>();
-        return rankedStores.OrderBy(s => s.TotalPrice).ToList();
-    }
-}
-\`\`\`
+> 📷 **Foto / Diagram Placeholder: Applicatie- en Databasestructuur (ERD / Architectuur)**  
+> *(Plaats hier een diagram van het datamodel of de systeemarchitectuur: bijv. \`![ShopR Systeemarchitectuur](/images/shopr-architecture.png)\`)*
 
 ---
 
@@ -363,9 +353,12 @@ Integratie van complexe frontend-logica, databasestructuur en API-koppelingen to
     tags: ["CVO-3", "C#", "WPF", "ASP.NET", "Entity-Framework", "SQL"],
     excerpt: "Ontwikkeling en onderhoud van bedrijfskritische C#-applicaties bij Innovation Center Daenens met WPF en ASP.NET.",
     readTime: "6 min leestijd",
-    content: `# CVO Project 3: Enterprise C# Applicaties met WPF & ASP.NET
+    content: `Tijdens mijn loopbaan als developer bij het **Innovation Center Daenens** en in academische projecten lag de focus op het bouwen van betrouwbare enterprise-software.
 
-Tijdens mijn loopbaan als developer bij het **Innovation Center Daenens** en in academische projecten lag de focus op het bouwen van betrouwbare enterprise-software.
+---
+
+> 📷 **Foto / Screenshot Placeholder: Enterprise WPF Desktop UI of Dashboard**  
+> *(Plaats hier een screenshot van de desktop interface of beheermodule: bijv. \`![WPF Enterprise Interface](/images/enterprise-wpf-demo.png)\`)*
 
 ---
 
@@ -377,30 +370,14 @@ Tijdens mijn loopbaan als developer bij het **Innovation Center Daenens** en in 
 ---
 
 ## 📦 Service & Data Koppeling Snippet
-\`\`\`csharp
-public class EmployeeService : IEmployeeService
-{
-    private readonly ApplicationDbContext _context;
 
-    public EmployeeService(ApplicationDbContext context)
-    {
-        _context = context;
-    }
+> 💻 **Code Placeholder: Enterprise C# Service & Repository Pattern**  
+> *(Plaats hier je eigen C# code snippet uit de codebase, bijv. Entity Framework context configuratie, WPF ViewModel of business logic service)*
 
-    public async Task<ServiceResult<EmployeeDto>> UpdateProfileAsync(int employeeId, UpdateEmployeeCommand command)
-    {
-        var employee = await _context.Employees.FindAsync(employeeId);
-        if (employee == null) return ServiceResult<EmployeeDto>.NotFound();
+---
 
-        employee.FirstName = command.FirstName;
-        employee.LastName = command.LastName;
-        employee.LastActive = DateTime.UtcNow;
-
-        await _context.SaveChangesAsync();
-        return ServiceResult<EmployeeDto>.Success(new EmployeeDto(employee));
-    }
-}
-\`\`\`
+> 📷 **Foto / Architectuur Placeholder: Software Architectuur & MVVM Datastromen**  
+> *(Plaats hier een architectuurschema van de lagen en componenten: bijv. \`![MVVM Architectuur Schema](/images/enterprise-architecture.png)\`)*
 
 ---
 
@@ -416,9 +393,12 @@ Het onderhouden van software in productie vereist strikte type safety, uitgebrei
     tags: ["CVO-4", "Docker", "DevOps", "Linux", "Azure", "CI/CD"],
     excerpt: "Containeriseren van microservices, implementatie van Linux serveromgevingen en automatische CI/CD deployments naar Azure.",
     readTime: "5 min leestijd",
-    content: `# CVO Project 4: DevOps, Docker & Cloud Automatisering
+    content: `Een compleet softwareproduct stopt niet bij lokale code. CVO Project 4 concentreert zich op de DevOps pipeline, containerisatie met Docker en deployment naar Linux- en Azure-omgevingen.
 
-Een compleet softwareproduct stopt niet bij lokale code. CVO Project 4 concentreert zich op de DevOps pipeline, containerisatie met Docker en deployment naar Linux- en Azure-omgevingen.
+---
+
+> 📷 **Foto / Screenshot Placeholder: Azure Cloud Dashboard & Deployment Status**  
+> *(Plaats hier een screenshot van je Azure portal, App Services of Container Registry: bijv. \`![Azure Cloud Dashboard](/images/azure-portal-status.png)\`)*
 
 ---
 
@@ -429,25 +409,15 @@ Een compleet softwareproduct stopt niet bij lokale code. CVO Project 4 concentre
 
 ---
 
-## 🐳 Productie Dockerfile Voorbeeld
-\`\`\`dockerfile
-# Build Stage
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
-COPY ["src/ShopR.Api/ShopR.Api.csproj", "src/ShopR.Api/"]
-RUN dotnet restore "src/ShopR.Api/ShopR.Api.csproj"
-COPY . .
-WORKDIR "/src/src/ShopR.Api"
-RUN dotnet build -c Release -o /app/build
-RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
+## 🐳 Productie Dockerfile & CI/CD Pipeline
 
-# Final Production Runner
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS final
-WORKDIR /app
-COPY --from=build /app/publish .
-EXPOSE 8080
-ENTRYPOINT ["dotnet", "ShopR.Api.dll"]
-\`\`\`
+> 💻 **Code / Config Placeholder: Productie Dockerfile & GitHub Actions CI/CD Pipeline**  
+> *(Plaats hier je eigen Dockerfile of GitHub Actions YAML configuratie uit de repository)*
+
+---
+
+> 📷 **Foto / Screenshot Placeholder: GitHub Actions CI/CD Pipeline Run**  
+> *(Plaats hier een screenshot van een succesvolle build- en deployment workflow: bijv. \`![CI/CD Pipeline Run](/images/github-actions-run.png)\`)*
 
 ---
 
@@ -463,9 +433,12 @@ Snelle, foutloze deployments en identieke test- en productieomgevingen op zowel 
     tags: ["Extracurriculair", "AI", "Digital Transformation", "Polen", "Howest"],
     excerpt: "Internationale certificering in Katowice (Polen), buitenschoolse projecten, community engagement en de toekomst van AI in software engineering.",
     readTime: "5 min leestijd",
-    content: `# Vrij & Extracurriculair: Internationale Ervaring & AI
+    content: `Naast het curriculum investeer ik doelbewust in internationale verrijking, certificeringen en de nieuwste ontwikkelingen in Artificial Intelligence.
 
-Naast het curriculum investeer ik doelbewust in internationale verrijking, certificeringen en de nieuwste ontwikkelingen in Artificial Intelligence.
+---
+
+> 📷 **Foto Placeholder: University of Economics Katowice & Internationaal Team**  
+> *(Plaats hier een foto van de campus in Polen, projectteam of leermoment: bijv. \`![Katowice Polen Universiteit](/images/katowice-polen-program.jpg)\`)*
 
 ---
 
@@ -473,6 +446,11 @@ Naast het curriculum investeer ik doelbewust in internationale verrijking, certi
 Tijdens een intensief internationaal programma aan de **University of Economics in Katowice, Poland**, behaalde ik het officiële *Certificaat Digital Transformation*. 
 - Diepgaande cases rondom digitale bedrijfstransformaties, procesoptimalisatie en de integratie van geautomatiseerde beslissingssystemen.
 - Samenwerking in internationale teams met focus op interculturele communicatie en innovatiestrategieën.
+
+---
+
+> 📷 **Foto / Document Placeholder: Certificaat Digital Transformation**  
+> *(Plaats hier een foto of scan van je behaalde certificaat: bijv. \`![Certificaat Digital Transformation](/images/certificaat-digital-transformation.jpg)\`)*
 
 ---
 
@@ -485,5 +463,147 @@ Met mijn huidige afstudeerrichting **AI** binnen de Bachelor Toegepaste Informat
 
 ## 🤝 Contacteer mij
 Geïnteresseerd in mijn profiel, CVO-projecten of mogelijkheden tot samenwerking? Gebruik gerust de contactgegevens bovenaan of stel direct een vraag aan mijn ingebouwde **Gemini AI Portfolio Agent**!`
+  },
+  {
+    id: "post-07",
+    slug: "stagemarkt-netwerken-en-verbinding-met-de-industrie",
+    title: "Stagemarkt: Netwerken & Verbinding met de Industrie",
+    date: "2026-10-24",
+    category: "Netwerkevents & Gastcolleges",
+    tags: ["Stagemarkt", "Netwerken", "Stage", "Toegepaste AI", "Software Engineering", "Howest"],
+    excerpt: "Reflectie op de Howest stagemarkt: doelgerichte technische dialogen met techbedrijven over software engineering, de adoptie van AI-pipelines en het verkennen van afstudeerstages.",
+    readTime: "5 min leestijd",
+    content: `Tijdens de recente **stagemarkt aan Howest** kreeg ik de uitgelezen kans om rechtstreeks in gesprek te gaan met innovatieve technologiebedrijven, consultancy-organisaties en AI-gedreven startups. 
+
+Als student **Toegepaste Informatica met specialisatie in AI** is zo'n beurs het ideale moment om theorie en praktijk aan elkaar te toetsen: welke architecturale uitdagingen leven er momenteel écht op de werkvloer, en waar liggen de opportuniteiten om als software engineer met AI-kennis direct meerwaarde te bieden?
+
+---
+
+> 📷 **Foto Placeholder: Sfeerimpressie Beursvloer / Standbezoek**  
+> *(Plaats hier je foto: bijv. \`![Stagemarkt Beursvloer](/images/stagemarkt-hero.jpg)\`)*
+
+---
+
+## 🎯 Doelgericht Netwerken: Focus op Diepgang Boven Kwantiteit
+
+Mijn doelstelling voor deze beurs was duidelijk afgebakend en tweeledig:
+1. **Peilen naar reële behoeften in het werkveld:** Waar liggen vandaag de knelpunten bij het bouwen van machine learning pipelines, computer vision toepassingen en backend integraties?
+2. **Zoeken naar ontwikkelteams met een hands-on mentaliteit:** Bedrijven waar innovatie, technische ownership en schone code centraal staan.
+
+In plaats van oppervlakkig visitekaartjes en brochures te verzamelen, ging ik doelgericht het gesprek aan over concrete projecten, tech stacks en actuele stage-opdrachten. Dit leverde direct diepgaandere en meer memorabele contacten op met senior engineers en recruiters.
+
+---
+
+> 📷 **Foto Placeholder: In-action / 1-op-1 Gesprek met Recruiters & Engineers**  
+> *(Plaats hier je foto: bijv. \`![Gesprek op de stagemarkt](/images/stagemarkt-gesprek.jpg)\`)*
+
+---
+
+## 💡 De Werkvloer in Transitie: De Synergie Tussen Software Engineering & AI
+
+De gesprekken bevestigden een zeer duidelijke trend binnen het Vlaamse en internationale IT-landschap:
+
+> *"De vraag naar ontwikkelaars die niet enkel abstracte modellen kunnen trainen, maar ook robuuste software kunnen neerzetten (van veilige REST API's en microservices tot end-to-end integratie), is groter dan ooit."*
+
+Voor mij was dit een enorme bevestiging van mijn gekozen leertraject. Mijn achtergrond in **C#, .NET en full-stack applicatieontwikkeling** (o.a. opgebouwd bij Innovation Center Daenens) vormt een stevig fundament voor het ontwerpen van schaalbare architecturen, terwijl mijn huidige studies in **Toegepaste AI** mij in staat stellen om geavanceerde machine learning modellen en computer vision pipelines naadloos te integreren.
+
+---
+
+## 🌐 Professionele Follow-up & Online Netwerken
+
+Netwerken stopt niet bij het verlaten van de beursvloer. Na afloop vatte ik mijn bevindingen en belangrijkste observaties samen in een gerichte **LinkedIn-post**. 
+
+Het doel hiervan was om:
+- De contacten met de gesproken engineers en recruiters warm te houden.
+- De dialoog over actuele AI-adoptievraagstukken voort te zetten.
+- Mijn professionele online aanwezigheid consistent af te stemmen op mijn technische ambities.
+
+Deze aanpak wierp direct vruchten af: de post leidde tot meerdere waardevolle 1-op-1 reacties en inhoudelijke vervolggesprekken over concrete stagevacatures.
+
+---
+
+## 📌 Belangrijkste Takeaways
+
+- **Gericht en inhoudelijk netwerken:** Door met inhoudelijke vragen naar concrete architecturen en pipelines te komen, ontstaan veel relevantere contacten dan via traditionele vacaturesites.
+- **Pragmatische software-engineering ontmoet AI:** Bedrijven zoeken engineers die de vertaalslag maken van een getraind model naar een stabiele, containerized productietoepassing.
+- **Kansen voor afstudeerstage:** Succesvolle introducties en concrete contacten gelegd voor een uitdagende stageplaats binnen AI & software engineering.`
+  },
+  {
+    id: "post-08",
+    slug: "gastcollege-eu-ai-act-in-de-praktijk",
+    title: "Gastcollege: De EU AI Act in de Praktijk & Compliance by Design",
+    date: "2026-10-24",
+    category: "Netwerkevents & Gastcolleges",
+    tags: ["EU AI Act", "AI Governance", "Gastcollege", "Compliance", "Ethiek", "Howest"],
+    excerpt: "Analyse van het gastcollege over de Europese AI Act: risicoclassificatie, data governance en de noodzaak van compliance-by-design in moderne software architecturen.",
+    readTime: "6 min leestijd",
+    content: `Met de goedkeuring en gefaseerde invoering van de **Europese AI Act** bevindt de technologiesector zich op een historisch kantelpunt. 
+
+Tijdens een diepgaand en verhelderend gastcollege kregen we inzicht in de juridische, ethische en vooral **technische implicaties** van deze wetgeving voor ontwikkelaars en organisaties die artificiële intelligentie bouwen of inzetten.
+
+De centrale vraag van de sessie luidde:  
+*Hoe ontwikkelen we krachtige, schaalbare en innovatieve AI-systemen zónder in te boeten aan transparantie, veiligheid en wettelijke compliance?*
+
+---
+
+> 📷 **Foto Placeholder: Spreker & Openingsslide EU AI Act Keynote**  
+> *(Plaats hier je foto: bijv. \`![EU AI Act Presentatie](/images/ai-act-keynote.jpg)\`)*
+
+---
+
+## ⚖️ Het Risicogebaseerde Kader van de AI Act
+
+De kern van de AI Act is opgebouwd rond een viervoudige **risicoclassificatie**:
+
+| Risiconiveau | Type Toepassing | Verplichtingen voor Developers |
+| :--- | :--- | :--- |
+| **Onaanvaardbaar Risico** | Social scoring, cognitieve gedragsmanipulatie, realtime biometrie in openbare ruimte | **Strikt verboden** in de Europese Unie. |
+| **Hoog Risico** | HR & werving, kredietbeoordeling, kritieke infrastructuur, medische AI | Strikte standaarden: kwalitatieve datasets, continue risicobeoordeling, logging & menselijk toezicht (*human-in-the-loop*). |
+| **Beperkt Risico** | Chatbots, deepfakes, AI-gegenereerde content | Transparantieverplichting: gebruikers moeten weten dat ze met AI interageren. |
+| **Minimaal Risico** | Spamfilters, AI-gestuurde games, aanbevelingssystemen | Geen aanvullende wettelijke restricties; vrij gebruik conform standaard privacywetgeving (AVG/GDPR). |
+
+Tijdens de lezing werd benadrukt dat compliance niet louter een administratieve formaliteit voor de juridische afdeling is, maar een **fundamentele software-architectuurkeuze**.
+
+---
+
+## 🛠️ Compliance by Design: Architecturale Impact voor AI-Engineers
+
+Voor mij als ontwikkelaar werd tijdens de presentatie één leidend principe kristalhelder:
+
+> *"Compliance en ethiek kun je niet achteraf als een pleister op een getraind model plakken. Databeheer, modelverantwoording en auditability moeten vanaf sprint één worden ingebed in de code en CI/CD-pipeline."*
+
+Dit vraagt om concrete technische waarborgen in het ontwikkelproces:
+
+1. **Data Governance & Traceerbaarheid:** Exacte herkomst van trainings- en validatiedatasets documenteren om bias en hallucinaties traceerbaar te maken.
+2. **Geautomatiseerde Audit Trails:** Elke modelinferentie in een hoog-risico context moet voorzien zijn van timestamps, modelversie, inputmetadata en confidence scores.
+3. **Reproduceerbare Pipelines:** Docker-containers en MLflow / DVC pipelines die garanderen dat een model op elk moment exact opnieuw getraind of geaudit kan worden.
+
+---
+
+## 💻 Geautomatiseerde Audit Trails & Interceptor Snippet
+
+> 💻 **Code Placeholder: Audit Trail Logging & Compliance Interceptor**  
+> *(Plaats hier optioneel je eigen logging-, traceerbaarheids- of validatiecode)*
+
+---
+
+> 📷 **Foto Placeholder: Inhoudelijke Slide Risicokader / LinkedIn Samenvatting**  
+> *(Plaats hier je foto: bijv. \`![AI Act Slide & LinkedIn Post](/images/ai-act-slide.jpg)\`)*
+
+---
+
+## 💬 LinkedIn Reflectie & Professionele Dialoog
+
+Aansluitend aan het gastcollege heb ik een beknopte analyse op **LinkedIn** geplaatst, waarin ik de belangrijkste architecturale lessen voor softwareontwikkelaars deelde. 
+
+De post lokte constructieve discussies uit met collega-studenten, docenten en vakgenoten over de balans tussen Europese innovatiedrang en noodzakelijke consumentenbescherming. Het actief documenteren en delen van dit soort leermomenten helpt om de opgedane vakkennis scherp te stellen en toont aan dat technologie nooit in een sociaal of juridisch vacuüm opereert.
+
+---
+
+## 📌 Belangrijkste Takeaways
+
+- **Strikte data governance:** De EU AI Act dwingt developers tot transparantie, continue evaluatie en reproduceerbaarheid van datasets en modellen.
+- **Compliance by Design:** Veiligheid, auditeerbaarheid en menselijk toezicht moeten al in de initiële architectuurfase van de software worden geïntegreerd.
+- **Kwaliteitsstempel:** Ethische en conforme AI is geen belemmering voor innovatie, maar juist een kwaliteitslabel dat betrouwbaarheid en adoptie in het bedrijfsleven bevordert.`
   }
 ];

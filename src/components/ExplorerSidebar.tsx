@@ -30,6 +30,7 @@ export const ExplorerSidebar: React.FC<ExplorerSidebarProps> = ({
   const [openFolders, setOpenFolders] = useState<Record<string, boolean>>({
     "Biografie & CV": true,
     "CVO Projecten (1-4)": true,
+    "Netwerkevents & Gastcolleges": true,
     "Vrij & Extracurriculair": true,
     "Quick Skills": false
   });
@@ -46,6 +47,7 @@ export const ExplorerSidebar: React.FC<ExplorerSidebarProps> = ({
   const categories: Array<Post['category']> = [
     "Biografie & CV",
     "CVO Projecten (1-4)",
+    "Netwerkevents & Gastcolleges",
     "Vrij & Extracurriculair"
   ];
 
