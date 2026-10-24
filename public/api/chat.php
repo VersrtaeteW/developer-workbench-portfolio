@@ -114,7 +114,13 @@ $geminiPayload = [
 ];
 
 // 4. CALL GEMINI VIA CURL (Try high-performance responsive flash models)
-$modelsToTry = ['gemini-3.6-flash', 'gemini-3.8-flash', 'gemini-3.7-flash'];
+$modelsToTry = [
+    'gemini-3.5-flash-lite',
+    'gemini-2.5-flash',
+    'gemini-2.5-flash-lite',
+    'gemini-2.0-flash',
+    'gemini-1.5-flash'
+];
 $response = false;
 $httpCode = 0;
 $curlError = '';
