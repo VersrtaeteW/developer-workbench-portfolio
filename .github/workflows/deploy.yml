@@ -46,5 +46,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           local_path: './dist/*'
-          remote_path: '/www'
+          remote_path: 'www'
           sftpArgs: '-o ConnectTimeout=30'
