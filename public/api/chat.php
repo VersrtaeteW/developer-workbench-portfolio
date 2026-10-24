@@ -131,9 +131,19 @@ $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $curlError = curl_error($ch);
 curl_close($ch);
 
-// If cURL error or non-200 (rate limit 429, auth 401/403, etc.), return graceful deterministic fallback
+// If cURL error or non-200 (rate limit 429, auth 401/403, etc.), return graceful deterministic fallback with debug insight
 if ($response === false || $httpCode !== 200) {
-    echo json_encode(['reply' => $fallbackMessage]);
+    $detail = '';
+    if ($curlError) {
+        $detail = "cURL error: " . $curlError;
+    } elseif ($response) {
+        $errObj = json_decode($response, true);
+        $detail = isset($errObj['error']['message']) ? $errObj['error']['message'] : ("HTTP " . $httpCode);
+    }
+    echo json_encode([
+        'reply' => $fallbackMessage,
+        'debug' => $detail
+    ]);
     exit();
 }
 
@@ -141,7 +151,10 @@ $responseData = json_decode($response, true);
 $replyText = $responseData['candidates'][0]['content']['parts'][0]['text'] ?? null;
 
 if (!$replyText) {
-    echo json_encode(['reply' => $fallbackMessage]);
+    echo json_encode([
+        'reply' => $fallbackMessage,
+        'debug' => 'Geen candidates in Gemini response: ' . substr($response, 0, 200)
+    ]);
     exit();
 }
 

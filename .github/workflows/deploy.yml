@@ -28,15 +28,12 @@ jobs:
         run: npm run build
 
       - name: 5. Generate secure config.local.php on the fly
+        env:
+          GEMINI_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           mkdir -p dist/api
-          cat << 'EOF' > dist/api/config.local.php
-          <?php
-          return [
-              'GEMINI_API_KEY' => '${{ secrets.GEMINI_API_KEY }}',
-          ];
-          EOF
-          chmod 600 dist/api/config.local.php
+          printf "<?php\nreturn [\n    'GEMINI_API_KEY' => '%s',\n];\n" "$GEMINI_KEY" > dist/api/config.local.php
+          chmod 644 dist/api/config.local.php
 
       - name: 6. Deploy to Combell via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4

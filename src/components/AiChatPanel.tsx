@@ -106,6 +106,9 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
 
         if (res.ok) {
           const data = await res.json();
+          if (data.debug) {
+            console.warn('[Gemini Proxy Debug]:', data.debug);
+          }
           assistantReply = data.reply || (data.error ? `Foutmelding: ${data.error}` : '');
         }
       } catch (networkErr) {
