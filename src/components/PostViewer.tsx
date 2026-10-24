@@ -161,19 +161,35 @@ export const PostViewer: React.FC<PostViewerProps> = ({
                 );
               },
               img({ src, alt, ...props }) {
+                const isCv = typeof src === 'string' && src.toLowerCase().includes('cv');
                 return (
                   <figure className="my-6 rounded-lg border border-[#30363d] overflow-hidden bg-[#161b22] shadow-xl">
-                    <img
-                      src={src}
-                      alt={alt || ''}
-                      className="w-full max-h-[500px] object-cover"
-                      loading="lazy"
-                      {...props}
-                    />
+                    <div className="bg-[#0d1117] flex items-center justify-center p-1 sm:p-2">
+                      <img
+                        src={src}
+                        alt={alt || ''}
+                        className="w-full h-auto max-h-[850px] object-contain rounded"
+                        loading="lazy"
+                        {...props}
+                      />
+                    </div>
                     {alt && (
-                      <figcaption className="px-4 py-2 bg-[#0d1117] text-xs text-[#8b949e] border-t border-[#30363d] italic flex items-center gap-2">
-                        <span className="text-[#10b981] font-semibold">📷</span>
-                        <span>{alt}</span>
+                      <figcaption className="px-4 py-2.5 bg-[#161b22] text-xs text-[#8b949e] border-t border-[#30363d] italic flex items-center justify-between flex-wrap gap-2">
+                        <span className="flex items-center gap-1.5">
+                          <span className="text-[#10b981] font-semibold not-italic">📷</span>
+                          <span>{alt}</span>
+                        </span>
+                        {isCv && (
+                          <a
+                            href="/cv-wout-verstraete.pdf"
+                            download="CV-Wout-Verstraete.pdf"
+                            className="not-italic inline-flex items-center gap-1 text-[#10b981] hover:text-[#34d399] font-medium transition-colors ml-auto text-xs"
+                            title="Download originele CV in PDF formaat"
+                          >
+                            <span>Download originele PDF</span>
+                            <span className="font-mono">↓</span>
+                          </a>
+                        )}
                       </figcaption>
                     )}
                   </figure>
