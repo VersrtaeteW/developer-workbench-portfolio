@@ -164,8 +164,8 @@ export const portfolioProfile: Profile = {
     email: "woutverstraete0608@gmail.com",
     phone: "0499 47 05 46",
     address: "Jachthoornstraat 7, 8730 Beernem",
-    github: "https://github.com/WoutV2a",
-    linkedin: "https://linkedin.com/in/wout-verstraete-2a",
+    github: "https://github.com/WoutV2",
+    linkedin: "https://linkedin.com/in/wout-verstraete-2a009443a",
     cvFile: "/cv-wout-verstraete.pdf"
   }
 };
@@ -198,8 +198,8 @@ Ik combineer praktische werkervaring in **C# en .NET** met een passie voor moder
 - **Locatie:** Jachthoornstraat 7, 8730 Beernem
 - **Telefoon:** 0499 47 05 46
 - **E-mail:** [woutverstraete0608@gmail.com](mailto:woutverstraete0608@gmail.com)
-- **LinkedIn:** [linkedin.com/in/wout-verstraete-2a](https://linkedin.com/in/wout-verstraete-2a)
-- **GitHub:** [github.com/WoutV2a](https://github.com/WoutV2a)
+- **LinkedIn:** [linkedin.com/in/wout-verstraete-2a009443a](https://linkedin.com/in/wout-verstraete-2a009443a)
+- **GitHub:** [github.com/WoutV2](https://github.com/WoutV2)
 
 ---
 

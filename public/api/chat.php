@@ -53,7 +53,7 @@ $candidateBio = "Gedreven softwareontwikkelaar met een stevige basis in applicat
 $candidateEducation = "Bachelor Toegepaste Informatica (AI) aan Howest (Sep 2025 - Heden), Graduaat Programmeren aan Howest (2021-2023), Netwerken en IT aan Sint-Jozefinstituut Brugge (2017-2019).";
 $candidateExperience = "Developer bij Innovation Center Daenens (Aug 2023 - Jun 2025: C#, WPF, ASP.NET, APIs, SQL), Centric (Helpdesk kassasystemen), Stages bij Pionira (Xamarin naar .NET MAUI) en Knoware (Websites met Bootstrap).";
 $candidateProjects = "1. Akkadian to English Translator (Machine Learning & NLP vertaaltool in Python, PyTorch, Pandas voor spijkerschrift). 2. ShopR (Crowdsourced mobiele boodschappen app in C#, Xamarin, SQL en REST API). 3. Enterprise C# applicaties bij Daenens. 4. DevOps, Docker containerisatie en Azure cloud deployment.";
-$candidateContact = "Email: woutverstraete0608@gmail.com, Tel: 0499 47 05 46, Locatie: Jachthoornstraat 7, 8730 Beernem, GitHub: github.com/WoutV2a, LinkedIn: linkedin.com/in/wout-verstraete-2a.";
+$candidateContact = "Email: woutverstraete0608@gmail.com, Tel: 0499 47 05 46, Locatie: Jachthoornstraat 7, 8730 Beernem, GitHub: github.com/WoutV2, LinkedIn: linkedin.com/in/wout-verstraete-2a009443a.";
 
 $systemInstructions = <<<EOT
 You are the AI Assistant for the Developer Workbench Portfolio website of {$candidateName}. Your ONLY purpose is to answer questions about the candidate's skills, CVO projects, education, CV, and blog posts.
