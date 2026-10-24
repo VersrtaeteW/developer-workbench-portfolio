@@ -38,13 +38,13 @@ jobs:
           EOF
           chmod 600 dist/api/config.local.php
 
-      - name: 6. Deploy to Combell via FTP/FTPS
+      - name: 6. Deploy to Combell via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
+          protocol: ftp
           port: 21
           local-dir: ./dist/
           server-dir: /www/
