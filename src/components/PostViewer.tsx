@@ -16,6 +16,7 @@ import {
   FileCode 
 } from 'lucide-react';
 import { Post } from '@/data/portfolioContent';
+import { ProtectedEmailInline } from './ProtectedEmail';
 
 interface PostViewerProps {
   post: Post;
@@ -149,6 +150,13 @@ export const PostViewer: React.FC<PostViewerProps> = ({
             remarkPlugins={[remarkGfm]}
             components={{
               a({ href, children, ...props }) {
+                if (
+                  href === '#reveal-email' || 
+                  href?.startsWith('mailto:') || 
+                  String(children).toLowerCase().includes('toon e-mailadres')
+                ) {
+                  return <ProtectedEmailInline />;
+                }
                 const isExternal = href?.startsWith('http') || href?.startsWith('//');
                 return (
                   <a
@@ -246,17 +254,6 @@ export const PostViewer: React.FC<PostViewerProps> = ({
                             {isCv ? `Curriculum Vitae Preview — Pagina ${cvPage} van 2` : alt}
                           </span>
                         </span>
-                        {isCv && (
-                          <a
-                            href="/cv-wout-verstraete.pdf"
-                            download="CV-Wout-Verstraete.pdf"
-                            className="not-italic inline-flex items-center gap-1 text-[#10b981] hover:text-[#34d399] font-medium transition-colors ml-auto text-xs"
-                            title="Download originele CV in PDF formaat"
-                          >
-                            <span>Download originele PDF (2 pagina's)</span>
-                            <span className="font-mono">↓</span>
-                          </a>
-                        )}
                       </figcaption>
                     )}
                   </figure>

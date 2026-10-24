@@ -2,8 +2,8 @@ export interface Profile {
   name: string;
   role: string;
   institution: string;
-  location: string;
-  phone: string;
+  location?: string;
+  phone?: string;
   bio: string;
   statusMessage: string;
   coreStrengths: string[];
@@ -39,11 +39,11 @@ export interface Profile {
   }[];
   contact: {
     email: string;
-    phone: string;
-    address: string;
+    phone?: string;
+    address?: string;
     github: string;
     linkedin: string;
-    cvFile: string;
+    cvFile?: string;
   };
 }
 
@@ -63,8 +63,6 @@ export const portfolioProfile: Profile = {
   name: "Wout Verstraete",
   role: "Softwareontwikkelaar & AI Specialist",
   institution: "Bachelor Toegepaste Informatica (AI) - Howest Brugge",
-  location: "Jachthoornstraat 7, 8730 Beernem, België",
-  phone: "0499 47 05 46",
   bio: "Gedreven softwareontwikkelaar met een stevige basis in applicatie- en webontwikkeling, momenteel bezig met een Bachelor Toegepaste Informatica met focus op AI. Combineert praktische werkervaring in C# en .NET met een passie voor moderne technologieën en intelligente systemen. Leergierig, resultaatgericht en altijd op zoek naar effectieve oplossingen.",
   statusMessage: "Bachelor Toegepaste Informatica (AI) @ Howest Brugge",
   coreStrengths: [
@@ -162,11 +160,8 @@ export const portfolioProfile: Profile = {
   ],
   contact: {
     email: "woutverstraete0608@gmail.com",
-    phone: "0499 47 05 46",
-    address: "Jachthoornstraat 7, 8730 Beernem",
     github: "https://github.com/WoutV2",
-    linkedin: "https://linkedin.com/in/wout-verstraete-2a009443a",
-    cvFile: "/cv-wout-verstraete.pdf"
+    linkedin: "https://linkedin.com/in/wout-verstraete-2a009443a"
   }
 };
 
@@ -197,9 +192,7 @@ Ik combineer praktische werkervaring in **C# en .NET** met een passie voor moder
 
 ## 👤 Personalia & Contact
 - **Naam:** Wout Verstraete
-- **Locatie:** Jachthoornstraat 7, 8730 Beernem
-- **Telefoon:** 0499 47 05 46
-- **E-mail:** [woutverstraete0608@gmail.com](mailto:woutverstraete0608@gmail.com)
+- **E-mail:** [Toon e-mailadres](#reveal-email)
 - **LinkedIn:** [linkedin.com/in/wout-verstraete-2a009443a](https://linkedin.com/in/wout-verstraete-2a009443a)
 - **GitHub:** [github.com/WoutV2](https://github.com/WoutV2)
 
