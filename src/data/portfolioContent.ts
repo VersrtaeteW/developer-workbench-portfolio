@@ -240,6 +240,17 @@ Ik combineer praktische werkervaring in **C# en .NET** met een passie voor moder
 
 ---
 
+## ⚡ Core Competenties & Specialisaties
+Hieronder staan de belangrijkste kerncompetenties waarin ik mij tijdens mijn opleidingen en werkervaring in gespecialiseerd heb:
+
+- **C#, .NET MAUI, Blazor, ASP.NET, WPF & Xamarin:** Uitgebreide ervaring met het bouwen van desktop-, mobiele en enterprise webapplicaties binnen het Microsoft-ecosysteem.
+- **AI & Data Science (Python, Pandas, NumPy, Scikit-Learn, PyTorch, TensorFlow):** Ontwikkeling en training van machine learning modellen, data analytics, predictive modeling en deep learning.
+- **Full-Stack Web & Database Architectuur (SQL, PostgreSQL, MySQL):** Ontwerp en beheer van relationele databases, ORM's (Entity Framework) en RESTful microservices.
+- **Containerisatie, Cloud & DevOps (Git, Docker, Linux, Azure):** Versiebeheer, CI/CD-pipelines, containerized deployment en cloudintegraties.
+- **Praktijkervaring bij Innovation Center Daenens & Centric:** Ervaring met productiesoftware, incidentmanagement onder SLA en agile teamwerking.
+
+---
+
 ## 📜 Certificaten & Talenkennis
 - **Certificaat Digital Transformation** — University of Economics in Katowice, Poland
 - **Nederlands:** Moedertaal

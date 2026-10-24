@@ -9,21 +9,19 @@ import {
   ChevronDown, 
   Calendar, 
   Search,
-  Layers,
-  Sparkles
+  Layers
 } from 'lucide-react';
 import { Post, Profile } from '@/data/portfolioContent';
 
 interface ExplorerSidebarProps {
   posts: Post[];
-  profile: Profile;
+  profile?: Profile;
   activePostId: string;
   onSelectPost: (id: string) => void;
 }
 
 export const ExplorerSidebar: React.FC<ExplorerSidebarProps> = ({
   posts,
-  profile,
   activePostId,
   onSelectPost
 }) => {
@@ -31,8 +29,7 @@ export const ExplorerSidebar: React.FC<ExplorerSidebarProps> = ({
     "Biografie & CV": true,
     "CVO Projecten (1-4)": true,
     "Netwerkevents & Gastcolleges": true,
-    "Vrij & Extracurriculair": true,
-    "Quick Skills": false
+    "Vrij & Extracurriculair": true
   });
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -212,35 +209,6 @@ export const ExplorerSidebar: React.FC<ExplorerSidebarProps> = ({
             </div>
           );
         })}
-
-        {/* Quick Profile Summary Dropdown in Explorer */}
-        <div className="mt-4 pt-2 border-t border-[#30363d]/60 px-3">
-          <button
-            onClick={() => toggleFolder('Quick Skills')}
-            className="w-full py-1 flex items-center justify-between text-[#8b949e] hover:text-[#e6edf3] text-[11px] uppercase tracking-wider font-semibold"
-          >
-            <span className="flex items-center gap-1.5">
-              <Sparkles className="w-3 h-3 text-[#f0883e]" />
-              Core Competenties
-            </span>
-            {openFolders['Quick Skills'] ? (
-              <ChevronDown className="w-3 h-3" />
-            ) : (
-              <ChevronRight className="w-3 h-3" />
-            )}
-          </button>
-
-          {openFolders['Quick Skills'] && (
-            <div className="mt-2 space-y-1.5 pl-1 pb-3">
-              {profile.coreStrengths.map((strength, idx) => (
-                <div key={idx} className="flex items-start gap-1.5 text-[11px] text-[#c9d1d9]">
-                  <span className="text-[#10b981] font-bold">›</span>
-                  <span>{strength}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
       </div>
     </aside>
   );
