@@ -184,8 +184,7 @@ export const portfolioPosts: Post[] = [
 
 ---
 
-> 📷 **Foto Placeholder: Professionele Profielfoto / Portret**  
-> *(Plaats hier je profielfoto: bijv. \`![Wout Verstraete - Portret](/images/wout-verstraete.jpg)\`)*
+![Wout Verstraete — Softwareontwikkelaar & AI Specialist in spe](/images/wout-verstraete.jpg)
 
 ---
 
@@ -237,8 +236,7 @@ Ik combineer praktische werkervaring in **C# en .NET** met een passie voor moder
 
 ---
 
-> 📷 **Foto / Document Placeholder: CV & Certificaten Overzicht**  
-> *(Plaats hier optioneel een screenshot van je CV of diploma: bijv. \`![Certificaat & CV](/images/cv-diploma-preview.jpg)\`)*
+![Curriculum Vitae Preview — Wout Verstraete](/images/cv-diploma-preview.png)
 
 ---
 
@@ -439,41 +437,6 @@ Het onderhouden van software in productie vereist strikte type safety, uitgebrei
 Snelle, foutloze deployments en identieke test- en productieomgevingen op zowel Linux als cloud containers.`
   },
   {
-    id: "post-06",
-    slug: "vrij-extracurriculair-internationale-ervaring-en-ai",
-    title: "Vrij & Extracurriculair: Certificaat Digital Transformation (Katowice, Polen)",
-    date: "2026-10-24",
-    category: "Vrij & Extracurriculair",
-    tags: ["Extracurriculair", "Digital Transformation", "Polen", "Howest", "Certificering"],
-    excerpt: "Internationale certificering aan de University of Economics in Katowice (Polen): bedrijfstransformaties, procesoptimalisatie en multicultureel teamwork.",
-    readTime: "4 min leestijd",
-    content: `Naast het curriculum investeer ik doelbewust in internationale verrijking, certificeringen en de praktische impact van technologische innovaties op bedrijfsprocessen.
-
----
-
-![Internationaal Programma aan de University of Economics in Katowice](/images/katowice-polen-program.png)
-
----
-
-## 🌍 Certificaat Digital Transformation in Polen
-Tijdens een intensief internationaal programma aan de **University of Economics in Katowice, Poland**, behaalde ik het officiële *Certificaat Digital Transformation*. 
-
-- **Diepgaande business cases:** Analyse van digitale bedrijfstransformaties, procesoptimalisatie en de integratie van geautomatiseerde beslissingssystemen.
-- **Internationaal teamwork:** Samenwerking in multidisciplinaire en multiculturele teams met focus op innovatiestrategieën en interculturele communicatie.
-- **Bruggen bouwen:** Het verbinden van enterprise IT-oplossingen met reële operationele bedrijfsuitdagingen.
-
----
-
-![Certificaat Digital Transformation - Katowice](/images/certificaat-digital-transformation.jpg)
-
----
-
-## 📌 Belangrijkste Takeaways & Vaardigheden
-- **Internationale samenwerking:** Ervaring met het uitwerken van digitaliseringsstrategieën binnen een internationale context.
-- **Strategisch inzicht:** Dieper inzicht in hoe software, data pipelines en automatisering meetbare bedrijfswaarde creëren.
-- **Academische en professionele verbreding:** Een waardevolle aanvulling op het software engineering en AI-curriculum van Howest.`
-  },
-  {
     id: "post-07",
     slug: "stagemarkt-netwerken-en-verbinding-met-de-industrie",
     title: "Stagemarkt: Netwerken & Verbinding met de Industrie",
@@ -606,5 +569,40 @@ De post lokte constructieve discussies uit met collega-studenten, docenten en va
 - **Strikte data governance:** De EU AI Act dwingt developers tot transparantie, continue evaluatie en reproduceerbaarheid van datasets en modellen.
 - **Compliance by Design:** Veiligheid, auditeerbaarheid en menselijk toezicht moeten al in de initiële architectuurfase van de software worden geïntegreerd.
 - **Kwaliteitsstempel:** Ethische en conforme AI is geen belemmering voor innovatie, maar juist een kwaliteitslabel dat betrouwbaarheid en adoptie in het bedrijfsleven bevordert.`
+  },
+  {
+    id: "post-06",
+    slug: "vrij-extracurriculair-internationale-ervaring-en-ai",
+    title: "Vrij & Extracurriculair: Certificaat Digital Transformation (Katowice, Polen)",
+    date: "2026-10-24",
+    category: "Vrij & Extracurriculair",
+    tags: ["Extracurriculair", "Digital Transformation", "Polen", "Howest", "Certificering"],
+    excerpt: "Internationale certificering aan de University of Economics in Katowice (Polen): bedrijfstransformaties, procesoptimalisatie en multicultureel teamwork.",
+    readTime: "4 min leestijd",
+    content: `Naast het curriculum investeer ik doelbewust in internationale verrijking, certificeringen en de praktische impact van technologische innovaties op bedrijfsprocessen.
+
+---
+
+![Internationaal Programma aan de University of Economics in Katowice](/images/katowice-polen-program.png)
+
+---
+
+## 🌍 Certificaat Digital Transformation in Polen
+Tijdens een intensief internationaal programma aan de **University of Economics in Katowice, Poland**, behaalde ik het officiële *Certificaat Digital Transformation*. 
+
+- **Diepgaande business cases:** Analyse van digitale bedrijfstransformaties, procesoptimalisatie en de integratie van geautomatiseerde beslissingssystemen.
+- **Internationaal teamwork:** Samenwerking in multidisciplinaire en multiculturele teams met focus op innovatiestrategieën en interculturele communicatie.
+- **Bruggen bouwen:** Het verbinden van enterprise IT-oplossingen met reële operationele bedrijfsuitdagingen.
+
+---
+
+![Certificaat Digital Transformation - Katowice](/images/certificaat-digital-transformation.jpg)
+
+---
+
+## 📌 Belangrijkste Takeaways & Vaardigheden
+- **Internationale samenwerking:** Ervaring met het uitwerken van digitaliseringsstrategieën binnen een internationale context.
+- **Strategisch inzicht:** Dieper inzicht in hoe software, data pipelines en automatisering meetbare bedrijfswaarde creëren.
+- **Academische en professionele verbreding:** Een waardevolle aanvulling op het software engineering en AI-curriculum van Howest.`
   }
 ];
