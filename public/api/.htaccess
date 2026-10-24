@@ -1,0 +1,5 @@
+# Prevent direct access to config files and dot files
+<FilesMatch "^(config\..*\.php|\.env)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

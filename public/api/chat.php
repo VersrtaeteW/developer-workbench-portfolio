@@ -21,8 +21,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // 1. CONFIGURATION
-// Define your Google Gemini API Key here or in an environment variable / .env file
+// Loads GEMINI_API_KEY from environment, or from a git-ignored config.local.php (never committed to git)
 $geminiApiKey = getenv('GEMINI_API_KEY') ?: '';
+
+$localConfigFile = __DIR__ . '/config.local.php';
+if (empty($geminiApiKey) && file_exists($localConfigFile)) {
+    $config = include $localConfigFile;
+    if (is_array($config) && !empty($config['GEMINI_API_KEY'])) {
+        $geminiApiKey = $config['GEMINI_API_KEY'];
+    }
+}
 
 // Deterministic fallback response as required
 $fallbackMessage = "API-sleutel niet geconfigureerd of quotum bereikt. Bekijk de artikelen in het middenpaneel.";
