@@ -7,10 +7,8 @@ import {
   FileText, 
   ChevronRight, 
   ChevronDown, 
-  Tag, 
   Calendar, 
   Search,
-  Filter,
   Layers,
   Sparkles
 } from 'lucide-react';

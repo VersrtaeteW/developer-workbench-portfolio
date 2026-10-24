@@ -40,6 +40,12 @@ export default defineConfig(({ mode }) => {
                 const userMessage = (body.message || '').trim();
                 const history = Array.isArray(body.history) ? body.history : [];
                 const activePostId = body.activePostId || null;
+                const activePostTitle = body.activePostTitle || null;
+                const activePostExcerpt = body.activePostExcerpt || null;
+
+                const activePostContext = activePostTitle
+                  ? `${activePostTitle} (${activePostId}): ${activePostExcerpt || ''}`
+                  : (activePostId || 'Geen specifiek artikel geopend');
 
                 const candidateName = 'Wout Verstraete';
                 const candidateBio = 'Gedreven softwareontwikkelaar met een stevige basis in applicatie- en webontwikkeling, momenteel bezig met een Bachelor Toegepaste Informatica met focus op AI aan Howest Brugge. Combineert praktische werkervaring in C# en .NET met een passie voor moderne technologieën en intelligente systemen.';
@@ -57,7 +63,7 @@ CONTEXT DATA:
 - Education: ${candidateEducation}
 - Work Experience & Internships: ${candidateExperience}
 - Key Projects: ${candidateProjects}
-- Active Post Context: ${activePostId}
+- Active Post Context: ${activePostContext}
 
 STRICT GUARDRAILS:
 1. Rely ONLY on the provided context. If asked about facts not in the context, politely state: "Daarover heb ik geen gegevens in het portfolio, maar neem gerust direct contact op."
@@ -91,10 +97,10 @@ STRICT GUARDRAILS:
 
                 const modelsToTry = [
                   'gemini-3.5-flash-lite',
-                  'gemini-2.5-flash',
-                  'gemini-2.5-flash-lite',
-                  'gemini-2.0-flash',
-                  'gemini-1.5-flash'
+                  'gemini-flash-lite-latest',
+                  'gemini-flash-latest',
+                  'gemini-3.8-flash',
+                  'gemini-3.6-flash'
                 ];
                 let data: any = null;
                 let lastError = '';

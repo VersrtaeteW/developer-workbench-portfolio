@@ -48,6 +48,12 @@ if (!$body || empty($body['message']) || !is_string($body['message'])) {
 $userMessage = trim($body['message']);
 $history = isset($body['history']) && is_array($body['history']) ? $body['history'] : [];
 $activePostId = isset($body['activePostId']) ? $body['activePostId'] : null;
+$activePostTitle = isset($body['activePostTitle']) ? $body['activePostTitle'] : null;
+$activePostExcerpt = isset($body['activePostExcerpt']) ? $body['activePostExcerpt'] : null;
+
+$activePostContext = $activePostTitle
+    ? "{$activePostTitle} ({$activePostId}): " . ($activePostExcerpt ?: '')
+    : ($activePostId ?: 'Geen specifiek artikel geopend');
 
 // Return fallback immediately if API key is not configured
 if (empty($geminiApiKey)) {
@@ -73,7 +79,7 @@ CONTEXT DATA:
 - Education: {$candidateEducation}
 - Work Experience & Internships: {$candidateExperience}
 - Key Projects: {$candidateProjects}
-- Active Post Context: {$activePostId}
+- Active Post Context: {$activePostContext}
 
 STRICT GUARDRAILS:
 1. Rely ONLY on the provided context. If asked about facts not in the context, politely state: "Daarover heb ik geen gegevens in het portfolio, maar neem gerust direct contact op."
@@ -116,10 +122,10 @@ $geminiPayload = [
 // 4. CALL GEMINI VIA CURL (Try high-performance responsive flash models)
 $modelsToTry = [
     'gemini-3.5-flash-lite',
-    'gemini-2.5-flash',
-    'gemini-2.5-flash-lite',
-    'gemini-2.0-flash',
-    'gemini-1.5-flash'
+    'gemini-flash-lite-latest',
+    'gemini-flash-latest',
+    'gemini-3.8-flash',
+    'gemini-3.6-flash'
 ];
 $response = false;
 $httpCode = 0;

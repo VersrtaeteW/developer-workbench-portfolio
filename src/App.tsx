@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { portfolioProfile, portfolioPosts, Post } from './data/portfolioContent';
 import { WindowHeader } from './components/WindowHeader';
 import { ExplorerSidebar } from './components/ExplorerSidebar';
@@ -10,7 +10,14 @@ import { FolderTree, FileText, Bot } from 'lucide-react';
 type MobileTab = 'explorer' | 'post' | 'agent';
 
 export default function App() {
-  const [activePostId, setActivePostId] = useState<string>(portfolioPosts[0]?.id || '');
+  const [activePostId, setActivePostId] = useState<string>(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const rawHash = window.location.hash.replace(/^#/, '');
+      const match = portfolioPosts.find((p) => p.slug === rawHash || p.id === rawHash);
+      if (match) return match.id;
+    }
+    return portfolioPosts[0]?.id || '';
+  });
   const [isAiPanelOpen, setIsAiPanelOpen] = useState<boolean>(true);
   const [isExplorerOpen, setIsExplorerOpen] = useState<boolean>(true);
   const [aiExternalPrompt, setAiExternalPrompt] = useState<string | null>(null);
@@ -19,6 +26,29 @@ export default function App() {
   const [mobileTab, setMobileTab] = useState<MobileTab>('post');
 
   const activePost = portfolioPosts.find((p) => p.id === activePostId) || portfolioPosts[0];
+
+  // Sync hash in URL when active post changes
+  useEffect(() => {
+    if (activePost && typeof window !== 'undefined') {
+      if (window.location.hash !== `#${activePost.slug}`) {
+        window.history.replaceState(null, '', `#${activePost.slug}`);
+      }
+    }
+  }, [activePost]);
+
+  // Listen to browser forward/back or external hash navigation
+  useEffect(() => {
+    const handleHashChange = () => {
+      const rawHash = window.location.hash.replace(/^#/, '');
+      const match = portfolioPosts.find((p) => p.slug === rawHash || p.id === rawHash);
+      if (match) {
+        setActivePostId(match.id);
+        setMobileTab('post');
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const handleSelectPost = (id: string) => {
     setActivePostId(id);
@@ -34,7 +64,11 @@ export default function App() {
   return (
     <div className="flex flex-col h-screen w-screen bg-[#0d1117] text-[#e6edf3] overflow-hidden select-none font-sans">
       {/* 1. VS Code Window Top Header */}
-      <WindowHeader profile={portfolioProfile} activePost={activePost} />
+      <WindowHeader 
+        profile={portfolioProfile} 
+        activePost={activePost} 
+        onSelectPost={handleSelectPost} 
+      />
 
       {/* 2. Mobile / Tablet (<1024px) Tab Selector Bar */}
       <div className="lg:hidden flex items-center bg-[#161b22] border-b border-[#30363d] px-2 py-1.5 gap-1 select-none flex-shrink-0">

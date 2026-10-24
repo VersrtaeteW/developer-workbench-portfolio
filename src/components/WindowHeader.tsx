@@ -11,35 +11,47 @@ import { Profile, Post } from '@/data/portfolioContent';
 interface WindowHeaderProps {
   profile: Profile;
   activePost: Post | null;
+  onSelectPost?: (id: string) => void;
 }
 
 export const WindowHeader: React.FC<WindowHeaderProps> = ({
   profile,
-  activePost
+  activePost,
+  onSelectPost
 }) => {
   return (
     <header className="h-10 bg-[#161b22] border-b border-[#30363d] flex items-center justify-between px-2 sm:px-3.5 select-none z-30 flex-shrink-0 gap-2">
       {/* Left: Window Control Dots & Brand */}
       <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
         <div className="flex items-center gap-1.5 sm:gap-2">
-          <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56] border border-[#e0443e]/50 cursor-pointer hover:opacity-80 transition-opacity" />
-          <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e] border border-[#dea123]/50 cursor-pointer hover:opacity-80 transition-opacity" />
-          <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f] border border-[#1aab29]/50 cursor-pointer hover:opacity-80 transition-opacity" />
+          <span title="Sluiten" className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ff5f56] border border-[#e0443e]/50 cursor-pointer hover:opacity-80 transition-opacity" />
+          <span title="Minimaliseren" className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e] border border-[#dea123]/50 cursor-pointer hover:opacity-80 transition-opacity" />
+          <span title="Maximaliseren" className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f] border border-[#1aab29]/50 cursor-pointer hover:opacity-80 transition-opacity" />
         </div>
 
         {/* Developer Badge */}
-        <div className="hidden sm:flex items-center gap-1.5 text-xs text-[#8b949e]">
+        <div 
+          onClick={() => onSelectPost && onSelectPost('post-01')}
+          className="hidden sm:flex items-center gap-1.5 text-xs text-[#8b949e] cursor-pointer hover:opacity-90 transition-opacity"
+          title="Naar introductie & biografie"
+        >
           <Code className="w-3.5 h-3.5 text-[#10b981]" />
           <span className="font-semibold text-[#e6edf3]">{profile.name}</span>
           <span className="text-[#8b949e] hidden md:inline">• Workbench</span>
         </div>
       </div>
 
-      {/* Center: Dynamic VS Code Breadcrumb (Hidden on very small screens to avoid overflow) */}
+      {/* Center: Dynamic VS Code Breadcrumb */}
       <div className="hidden sm:flex items-center gap-1.5 text-xs text-[#8b949e] font-mono min-w-0 truncate">
-        <span className="hover:text-[#e6edf3] cursor-pointer">portfolio</span>
+        <span 
+          onClick={() => onSelectPost && onSelectPost('post-01')} 
+          className="hover:text-[#10b981] transition-colors cursor-pointer"
+          title="Naar begin"
+        >
+          portfolio
+        </span>
         <ChevronRight className="w-3 h-3 text-[#30363d]" />
-        <span className="hover:text-[#e6edf3] cursor-pointer hidden md:inline">posts</span>
+        <span className="text-[#8b949e] hidden md:inline">posts</span>
         {activePost && (
           <>
             <ChevronRight className="w-3 h-3 text-[#30363d] hidden md:inline" />

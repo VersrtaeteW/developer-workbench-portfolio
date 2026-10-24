@@ -101,7 +101,9 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
           body: JSON.stringify({
             message: text.trim(),
             history: historyPayload,
-            activePostId: activePost?.id
+            activePostId: activePost?.id,
+            activePostTitle: activePost?.title,
+            activePostExcerpt: activePost?.excerpt
           })
         });
 
@@ -322,8 +324,8 @@ export const AiChatPanel: React.FC<AiChatPanelProps> = ({
           <span>Druk op Enter om te verzenden</span>
           <span>Shift + Enter voor nieuwe regel</span>
         </div>
-        <div className="mt-1 text-center text-[10px] text-[#484f58] select-none flex items-center justify-center gap-1">
-          <AlertCircle className="w-2.5 h-2.5 opacity-60" />
+        <div className="mt-1.5 text-center text-[10px] text-[#6e7681] select-none flex items-center justify-center gap-1">
+          <AlertCircle className="w-2.5 h-2.5 opacity-80" />
           <span>AI kan fouten maken. Controleer belangrijke informatie.</span>
         </div>
       </div>

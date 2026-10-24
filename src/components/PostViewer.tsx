@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { 
@@ -11,10 +11,9 @@ import {
   Check, 
   ChevronLeft, 
   ChevronRight, 
-  BookOpen,
-  Share2,
-  FileCode,
-  CheckCircle2
+  BookOpen, 
+  Share2, 
+  FileCode 
 } from 'lucide-react';
 import { Post } from '@/data/portfolioContent';
 
@@ -33,6 +32,12 @@ export const PostViewer: React.FC<PostViewerProps> = ({
 }) => {
   const [copiedCodeId, setCopiedCodeId] = useState<string | null>(null);
   const [linkCopied, setLinkCopied] = useState(false);
+  const containerRef = useRef<HTMLElement>(null);
+
+  // Reset scroll to top when user switches posts
+  useEffect(() => {
+    containerRef.current?.scrollTo({ top: 0, behavior: 'instant' });
+  }, [post.id]);
 
   // Compute Prev / Next post navigation
   const currentIndex = allPosts.findIndex((p) => p.id === post.id);
@@ -46,13 +51,15 @@ export const PostViewer: React.FC<PostViewerProps> = ({
   };
 
   const handleShare = () => {
-    navigator.clipboard.writeText(window.location.href);
+    const url = new URL(window.location.href);
+    url.hash = post.slug;
+    navigator.clipboard.writeText(url.toString());
     setLinkCopied(true);
     setTimeout(() => setLinkCopied(false), 2000);
   };
 
   return (
-    <main className="flex-1 h-full bg-[#0d1117] overflow-y-auto flex flex-col">
+    <main ref={containerRef} className="flex-1 h-full bg-[#0d1117] overflow-y-auto flex flex-col scroll-smooth">
       {/* Editor Tab Header */}
       <div className="h-9 border-b border-[#30363d] bg-[#161b22] px-2 sm:px-3 flex items-center justify-between flex-shrink-0 gap-2">
         <div className="flex items-center h-full min-w-0">
@@ -139,6 +146,20 @@ export const PostViewer: React.FC<PostViewerProps> = ({
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
+              a({ href, children, ...props }) {
+                const isExternal = href?.startsWith('http') || href?.startsWith('//');
+                return (
+                  <a
+                    href={href}
+                    target={isExternal ? '_blank' : undefined}
+                    rel={isExternal ? 'noopener noreferrer' : undefined}
+                    className="text-[#58a6ff] hover:underline"
+                    {...props}
+                  >
+                    {children}
+                  </a>
+                );
+              },
               table({ children, ...props }) {
                 return (
                   <div className="prose-table-container">
@@ -156,7 +177,7 @@ export const PostViewer: React.FC<PostViewerProps> = ({
                 }
 
                 const lang = match ? match[1] : 'code';
-                const blockId = `${post.id}-${Math.random().toString(36).substring(2, 7)}`;
+                const blockId = `${post.id}-${lang}-${codeString.length}`;
 
                 return (
                   <div className="my-5 rounded-lg border border-[#30363d] bg-[#161b22] overflow-hidden shadow-lg">

@@ -5,11 +5,8 @@ import {
   GitBranch,
   Check,
   Bot,
-  Terminal,
   Bell,
-  Cpu,
   Wifi,
-  Code2,
   Columns,
   AlertCircle,
   AlertTriangle
